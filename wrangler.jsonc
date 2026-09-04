@@ -1,7 +1,9 @@
 {
-  "name": "travel-atlas",
+  "name": "cui-travel-atlas",
   "main": "src/worker.js",
   "compatibility_date": "2026-09-04",
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
