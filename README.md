@@ -4,36 +4,41 @@
 
 ## 命名规则
 
-旅行目录统一使用：
+每一份旅行手册都用 **出发月-日** 做前缀，年份放在上一级目录：
 
-`trips/<YYYY>/<MM-DD>-<destination>/`
+`public/trips/<YYYY>/<MM-DD>-<destination>/index.html`
 
 例如：
 
-- `trips/2026/09-24-phuket/`
-- `trips/2026/11-03-tokyo/`
-- `trips/2026/12-28-hokkaido/`
+- `public/trips/2026/09-24-phuket/index.html`
+- `public/trips/2026/11-03-tokyo/index.html`
+- `public/trips/2026/12-28-hokkaido/index.html`
+- `public/trips/2027/01-18-osaka/index.html`
 
-这样同一年可以有任意多次旅行，并且目录按出发日期自然排序。
+这样一年去很多次也不会冲突，并且在 GitHub 中会自然按出发日期排序。
 
-公开访问路径统一为：
+公开访问路径：
 
-`/<YYYY>/<MM-DD>-<destination>`
+`/trips/<YYYY>/<MM-DD>-<destination>/`
 
-例如本次普吉岛：`/2026/09-24-phuket`
+本次普吉岛：
+
+`/trips/2026/09-24-phuket/`
 
 ## 目录结构
 
 ```text
 travel-atlas/
-├── index.html
-├── trips/
-│   └── 2026/
-│       └── 09-24-phuket/
-│           └── index.html
+├── public/
+│   ├── index.html                 # 所有旅行的总入口
+│   └── trips/
+│       └── 2026/
+│           └── 09-24-phuket/
+│               └── index.html
 ├── src/
 │   └── worker.js
-└── wrangler.jsonc
+├── wrangler.jsonc
+└── README.md
 ```
 
-旅行手册页面保持单 HTML、零第三方前端依赖；Cloudflare 负责公开访问和离线缓存。
+旅行详情页保持单 HTML、零第三方前端依赖；Cloudflare Workers Static Assets 负责公开访问，Service Worker 为已经访问过的页面提供离线回看。
