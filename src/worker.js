@@ -3,7 +3,7 @@ const TRIPS = {
 };
 
 const SW = `
-const CACHE = "travel-atlas-v3";
+const CACHE = "travel-atlas-v4";
 const PRECACHE = [
   "/",
   "/index.html",
@@ -33,7 +33,7 @@ self.addEventListener("fetch", event => {
 
   if (req.mode === "navigate") {
     event.respondWith(
-      fetch(req)
+      fetch(req, { cache: "no-store" })
         .then(response => {
           const copy = response.clone();
           caches.open(CACHE).then(cache => cache.put(req, copy));
@@ -100,6 +100,8 @@ async function fetchAsset(request, env, target = null) {
 
   const headers = new Headers(response.headers);
   headers.delete("content-length");
+  headers.set("cache-control", "no-cache, max-age=0");
+  headers.set("x-travel-atlas-nav", "v4");
   return new Response(enhancePhuketGuide(await response.text()), {
     status: response.status,
     statusText: response.statusText,
