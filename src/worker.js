@@ -3,7 +3,7 @@ const TRIPS = {
 };
 
 const SW = `
-const CACHE = "travel-atlas-v2";
+const CACHE = "travel-atlas-v3";
 const PRECACHE = [
   "/",
   "/index.html",
@@ -56,6 +56,57 @@ self.addEventListener("fetch", event => {
 });
 `;
 
+const DAY_NAV_CSS = `.day-nav{position:sticky;top:8px;z-index:30;display:flex;gap:8px;overflow-x:auto;padding:10px 4px;margin:-14px 0 24px;scrollbar-width:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.day-nav::-webkit-scrollbar{display:none}.day-nav a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--paper) 92%,transparent);box-shadow:0 6px 18px rgba(0,0,0,.06);font-size:12px;font-weight:950;transition:.18s transform,.18s border-color,.18s background}.day-nav a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tag)}.day-nav a:hover{transform:translateY(-1px)}.day-nav a.active{border-color:var(--tag);background:color-mix(in srgb,var(--tag) 14%,var(--paper));color:var(--tag)}.day{scroll-margin-top:84px}`;
+
+const DAY_NAV_HTML = `<nav class="day-nav" aria-label="按天快速导航">
+  <a href="#day1" data-day="day1" style="--tag:var(--d1)">DAY1 · 9/24</a>
+  <a href="#day2" data-day="day2" style="--tag:var(--d2)">DAY2 · 9/25</a>
+  <a href="#day3" data-day="day3" style="--tag:var(--d3)">DAY3 · 9/26</a>
+  <a href="#day4" data-day="day4" style="--tag:var(--d4)">DAY4 · 9/27</a>
+  <a href="#day5" data-day="day5" style="--tag:var(--d5)">DAY5 · 9/28</a>
+</nav>`;
+
+const DAY_NAV_SCRIPT = `<script>(()=>{const links=[...document.querySelectorAll('.day-nav a')],days=[...document.querySelectorAll('.day[id]')];const active=id=>{links.forEach(a=>a.classList.toggle('active',a.dataset.day===id));const current=links.find(a=>a.dataset.day===id);if(current)current.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})};links.forEach(a=>a.addEventListener('click',()=>active(a.dataset.day)));if(days.length&&'IntersectionObserver'in window){const ob=new IntersectionObserver(entries=>{const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(v)active(v.target.id)},{rootMargin:'-24% 0px -55% 0px',threshold:[0,.15,.35,.6]});days.forEach(d=>ob.observe(d))}if(location.hash&&/^#day[1-5]$/.test(location.hash))active(location.hash.slice(1))})();<\/script>`;
+
+function enhancePhuketGuide(html) {
+  if (html.includes('class="day-nav"')) return html;
+
+  html = html.replace('</style>', `${DAY_NAV_CSS}</style>`);
+
+  const mapSection = '<section>\n  <div class="section-title"><h2>行程总览地图</h2>';
+  html = html.replace(mapSection, `${DAY_NAV_HTML}\n\n${mapSection}`);
+
+  for (let i = 1; i <= 5; i++) {
+    html = html.replace(
+      `<article class="day card" style="--day:var(--d${i})">`,
+      `<article id="day${i}" class="day card" style="--day:var(--d${i})">`
+    );
+  }
+
+  html = html.replace('</body>', `${DAY_NAV_SCRIPT}\n</body>`);
+  return html;
+}
+
+async function fetchAsset(request, env, target = null) {
+  const url = new URL(request.url);
+  const assetRequest = target
+    ? new Request(new URL(target, url.origin), request)
+    : request;
+  const response = await env.ASSETS.fetch(assetRequest);
+
+  const isPhuket = url.pathname === "/2026/09-24-phuket" || url.pathname === "/2026/09-24-phuket/" || url.pathname.includes("/trips/2026/09-24-phuket/");
+  const contentType = response.headers.get("content-type") || "";
+  if (!isPhuket || !contentType.includes("text/html")) return response;
+
+  const headers = new Headers(response.headers);
+  headers.delete("content-length");
+  return new Response(enhancePhuketGuide(await response.text()), {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -75,11 +126,6 @@ export default {
       : url.pathname;
 
     const target = TRIPS[normalized];
-    if (target) {
-      const assetUrl = new URL(target, url.origin);
-      return env.ASSETS.fetch(new Request(assetUrl, request));
-    }
-
-    return env.ASSETS.fetch(request);
+    return fetchAsset(request, env, target || null);
   }
 };
