@@ -1,15 +1,19 @@
+const PRIMARY_HOST = "travel.606858.xyz";
+const PRIMARY_ORIGIN = "https://travel.606858.xyz";
+
 const TRIPS = {
   "/2026/09-24-phuket": "/trips/2026/09-24-phuket/index.html"
 };
 
 const SW = `
-const CACHE = "travel-atlas-v6";
+const CACHE = "travel-atlas-v7";
 const PRECACHE = [
   "/",
   "/index.html",
   "/2026/09-24-phuket",
   "/trips/2026/09-24-phuket/index.html"
 ];
+const wait = ms => new Promise(resolve => setTimeout(() => resolve(null), ms));
 
 self.addEventListener("install", event => {
   event.waitUntil(
@@ -27,28 +31,43 @@ self.addEventListener("activate", event => {
   );
 });
 
+async function offlineFallback(req) {
+  const hit = await caches.match(req, { ignoreSearch: true });
+  if (hit) return hit;
+  const url = new URL(req.url);
+  if (url.pathname.includes("09-24-phuket")) {
+    return (await caches.match("/2026/09-24-phuket")) ||
+      (await caches.match("/trips/2026/09-24-phuket/index.html"));
+  }
+  return caches.match("/");
+}
+
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
   const req = event.request;
 
   if (req.mode === "navigate") {
-    event.respondWith(
-      fetch(req, { cache: "no-store" })
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE);
+      const cached = await cache.match(req, { ignoreSearch: true });
+      const network = fetch(req, { cache: "no-store" })
         .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE).then(cache => cache.put(req, copy));
+          if (response && response.ok) cache.put(req, response.clone());
           return response;
         })
-        .catch(async () => {
-          const hit = await caches.match(req, { ignoreSearch: true });
-          if (hit) return hit;
-          const url = new URL(req.url);
-          if (url.pathname.includes("09-24-phuket")) {
-            return (await caches.match("/2026/09-24-phuket")) || (await caches.match("/trips/2026/09-24-phuket/index.html"));
-          }
-          return caches.match("/");
-        })
-    );
+        .catch(() => null);
+
+      if (!cached) {
+        return (await network) || (await offlineFallback(req));
+      }
+
+      // 网络好时优先拿到最新页面；跨境、酒店 Wi-Fi 或弱网超过 900ms 时直接用本地缓存。
+      const quick = await Promise.race([network, wait(900)]);
+      if (quick) return quick;
+
+      event.waitUntil(network.then(() => undefined));
+      return cached;
+    })());
     return;
   }
 
@@ -161,6 +180,16 @@ function enhancePhuketGuide(html) {
   return html;
 }
 
+function htmlHeaders(response, tag) {
+  const headers = new Headers(response.headers);
+  headers.delete("content-length");
+  // 浏览器只缓存 60 秒，保证更新足够快；Cloudflare 边缘节点可缓存 10 分钟。
+  headers.set("cache-control", "public, max-age=60, stale-while-revalidate=300");
+  headers.set("cdn-cache-control", "public, max-age=600, stale-while-revalidate=86400");
+  headers.set("x-travel-atlas-enhance", tag);
+  return headers;
+}
+
 async function fetchAsset(request, env, target = null) {
   const url = new URL(request.url);
   const assetRequest = target
@@ -168,18 +197,25 @@ async function fetchAsset(request, env, target = null) {
     : request;
   const response = await env.ASSETS.fetch(assetRequest);
 
-  const isPhuket = url.pathname === "/2026/09-24-phuket" || url.pathname === "/2026/09-24-phuket/" || url.pathname.includes("/trips/2026/09-24-phuket/");
   const contentType = response.headers.get("content-type") || "";
-  if (!isPhuket || !contentType.includes("text/html")) return response;
+  if (!contentType.includes("text/html")) return response;
 
-  const headers = new Headers(response.headers);
-  headers.delete("content-length");
-  headers.set("cache-control", "no-cache, max-age=0");
-  headers.set("x-travel-atlas-enhance", "v6");
+  const isPhuket = url.pathname === "/2026/09-24-phuket" ||
+    url.pathname === "/2026/09-24-phuket/" ||
+    url.pathname.includes("/trips/2026/09-24-phuket/");
+
+  if (!isPhuket) {
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: htmlHeaders(response, "v7")
+    });
+  }
+
   return new Response(enhancePhuketGuide(await response.text()), {
     status: response.status,
     statusText: response.statusText,
-    headers
+    headers: htmlHeaders(response, "v7")
   });
 }
 
@@ -195,6 +231,12 @@ export default {
           "service-worker-allowed": "/"
         }
       });
+    }
+
+    // 旧 workers.dev 链接继续可用，但统一跳到正式域名，避免两套缓存和分享地址并存。
+    if (url.hostname.endsWith(".workers.dev") && url.hostname !== PRIMARY_HOST) {
+      const destination = new URL(url.pathname + url.search + url.hash, PRIMARY_ORIGIN);
+      return Response.redirect(destination.toString(), 308);
     }
 
     const normalized = url.pathname.length > 1 && url.pathname.endsWith("/")
