@@ -1,3 +1,4 @@
+// One-time migration runner: capture the currently deployed final page and make it the repository source.
 import { chromium } from 'playwright';
 import { writeFile, rm } from 'node:fs/promises';
 
