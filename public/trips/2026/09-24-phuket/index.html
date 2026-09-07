@@ -15,7 +15,7 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
 (async()=>{
   const BASE='/trips/2026/09-24-phuket/base.html';
   const MAP_URL='/trips/2026/09-24-phuket/phuket-journey-map.png';
-  const PAGE_CACHE='travel-atlas-phuket-v11';
+  const PAGE_CACHE='travel-atlas-phuket-v12';
 
   async function getText(url){
     try{
@@ -89,6 +89,7 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
     style.textContent=`
       .journey-overview{margin:0;display:grid;gap:12px}
       .journey-overview img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line);background:#f8f4ec}
+      #prep{scroll-margin-top:84px}
       .prep-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 12px;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--paper) 92%,var(--chip))}
       .prep-progress{display:flex;align-items:center;gap:10px;min-width:min(100%,320px);font-size:12px;font-weight:900}
       .prep-progress-track{flex:1;height:8px;min-width:100px;background:var(--chip);border-radius:999px;overflow:hidden}
@@ -113,6 +114,17 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
 
     const todoSec=sections.find(s=>s.querySelector('.section-title h2')?.textContent.includes('待办清单'));
     if(todoSec){
+      todoSec.id='prep';
+      const dayNav=doc.querySelector('.day-nav');
+      if(dayNav&&!dayNav.querySelector('[data-day="prep"]')){
+        const prepTab=doc.createElement('a');
+        prepTab.href='#prep';
+        prepTab.dataset.day='prep';
+        prepTab.style.setProperty('--tag','var(--accent2)');
+        prepTab.textContent='待办';
+        dayNav.appendChild(prepTab);
+      }
+
       const groupsHtml=groups.map(([title,items])=>`<article class="prep-group card"><h3>${title}</h3><ul>${items.map(([id,text])=>`<li data-check-id="${id}"><label class="prep-check"><input type="checkbox"><span class="prep-copy">${text}</span></label></li>`).join('')}</ul></article>`).join('');
       todoSec.innerHTML=`<div class="section-title"><h2>出发前准备 & 待办</h2><small>可勾选 · 本机自动保存</small></div><div class="prep-toolbar"><div class="prep-progress"><span id="prepProgressText">已完成 0 / 0</span><span class="prep-progress-track"><i id="prepProgressFill" class="prep-progress-fill"></i></span></div><button id="prepReset" class="prep-reset" type="button">清空勾选</button><div class="prep-note">勾选状态保存在当前浏览器 localStorage，仅此设备 / 浏览器可见，不上传服务器。</div></div><div class="prep-groups">${groupsHtml}</div>`;
 
