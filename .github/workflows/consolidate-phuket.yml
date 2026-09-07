@@ -1,0 +1,38 @@
+name: Consolidate Phuket trip
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/consolidate-phuket.yml'
+      - 'scripts/consolidate-phuket.mjs'
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Capture final rendered guide as the single source page
+        run: node scripts/consolidate-phuket.mjs
+      - name: Commit consolidated structure
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No structure changes to commit"
+          else
+            git commit -m "Consolidate Phuket trip into single HTML"
+            git push
+          fi
