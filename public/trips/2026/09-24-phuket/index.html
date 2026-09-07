@@ -14,15 +14,15 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
 <script>
 (async()=>{
   const BASE='/trips/2026/09-24-phuket/base.html';
-  const MAPDATA='/trips/2026/09-24-phuket/phuket-map-data.txt';
-  const PAGE_CACHE='travel-atlas-phuket-v10';
+  const MAP_URL='/trips/2026/09-24-phuket/phuket-journey-map.jpg';
+  const PAGE_CACHE='travel-atlas-phuket-v11';
 
   async function getText(url){
     try{
       const r=await fetch(url,{cache:'no-store'});
       if(!r.ok)throw new Error(String(r.status));
       const text=await r.text();
-      if('caches' in window){const c=await caches.open(PAGE_CACHE);await c.put(url,new Response(text,{headers:{'content-type':'text/plain;charset=utf-8'}}));}
+      if('caches' in window){const c=await caches.open(PAGE_CACHE);await c.put(url,new Response(text,{headers:{'content-type':'text/html;charset=utf-8'}}));}
       return text;
     }catch(e){
       if('caches' in window){const c=await caches.open(PAGE_CACHE),hit=await c.match(url);if(hit)return hit.text();}
@@ -30,8 +30,59 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
     }
   }
 
+  async function cacheMap(){
+    if(!('caches' in window))return;
+    try{
+      const c=await caches.open(PAGE_CACHE);
+      const r=await fetch(MAP_URL,{cache:'reload'});
+      if(r.ok)await c.put(MAP_URL,r.clone());
+    }catch(e){}
+  }
+
+  const groups=[
+    ['🛂 证件 / 入境',[
+      ['passport-original','<b>护照原件</b><span class="prep-priority">最优先</span>：出门前最后再确认一次，并检查有效期。'],
+      ['passport-backup','<b>护照资料页备份：</b>手机离线保存一份电子版，另存到可信的云端位置。'],
+      ['tdac','<b>TDAC 数字入境卡：</b>抵达前按泰国官方要求完成，提交后把确认页 / QR 保存离线。'],
+      ['orders-offline','<b>机票与酒店订单：</b>CZ6063 / CZ6064、Metadee、Centara 的确认信息都离线保存。'],
+      ['cash-proof','<b>资金证明 / 泰铢现金：</b>准备适量泰铢和小额现金；最低携带要求出发前再核对泰国官方最新口径。'],
+      ['insurance','<b>旅行保险：</b>保单、保险公司联系方式和紧急联系人离线保存。']
+    ]],
+    ['🔌 电子设备 / 网络',[
+      ['phone-charger','<b>手机充电器 + 数据线</b><span class="prep-priority">必带</span>。'],
+      ['power-bank','<b>移动电源：</b>提前充满电，按航空公司规则随身携带，不放托运行李。'],
+      ['travel-adapter','<b>万能转换插头：</b>带一个旅行转换插头备用。'],
+      ['camera-kit','<b>相机 / 运动相机：</b>如携带，确认电池、存储卡与对应充电器。'],
+      ['mobile-network','<b>网络：</b>提前确认国际漫游、eSIM 或当地 SIM；确保 Grab / Bolt 等打车 App 已登录可用。'],
+      ['offline-guide','<b>离线资料：</b>出发前至少打开一次本手册，让主要内容进入本地缓存。']
+    ]],
+    ['🌧️ 雨季 / 海边用品',[
+      ['rain-gear','<b>折叠伞或轻便雨衣</b><span class="prep-priority">9 月建议</span>。'],
+      ['waterproof','<b>防水袋 / 手机防水套：</b>海边、突然阵雨和 Day 2 海上方案都用得上。'],
+      ['swimwear','<b>泳衣、拖鞋 / 凉鞋、快干衣物：</b>尽量轻便，湿了容易处理。'],
+      ['sun-protection','<b>防晒：</b>防晒用品、帽子、墨镜。'],
+      ['mosquito','<b>驱蚊用品：</b>尤其傍晚、绿植较多和户外用餐时。'],
+      ['daily-items','<b>常用物品：</b>纸巾、湿巾、创可贴及个人日常必需品。']
+    ]],
+    ['⏰ 出发前 24—48h',[
+      ['flight-recheck','<b>航班：</b>再次确认 CZ6063 / CZ6064 状态、值机和行李额度。'],
+      ['airport-transfer','<b>机场接送：</b>确认 9/24 HKT → Metadee、9/28 Centara → HKT。'],
+      ['day2-weather','<b>Day 2 海况：</b>看最新天气与正规运营方通知，决定跳岛还是南部海岸 B 方案。'],
+      ['hotel-recheck','<b>两家酒店：</b>再次确认入住 / 退房时间；Centara 两天早餐未包含。'],
+      ['cash-card','<b>现金 / 卡：</b>泰铢、至少一张境外可用银行卡分开放置。'],
+      ['final-five','<b>最后五件：</b>护照、手机、钱包、充电器、移动电源，离家前逐项摸一遍。']
+    ]],
+    ['🧭 行程待办',[
+      ['sea-booking','<b>Day 2 海上项目：</b>如预订，正式订单确定后再补集合点、时间和接送信息。'],
+      ['day2-plan-b','<b>Day 2 B 方案：</b>海况不佳就走 Karon Viewpoint → Nai Harn → Rawai → Promthep Cape。'],
+      ['day3-luggage','<b>Day 3 行李：</b>从 Metadee 退房后一路带到 Centara，贵重物品随身。'],
+      ['restaurants','<b>餐厅：</b>目前按区域留白，等后续补具体餐厅再锁定。'],
+      ['copy-address','<b>地址：</b>页面里的酒店、机场、景点等地点可直接复制，方便粘贴到打车或地图 App。']
+    ]]
+  ];
+
   try{
-    const [html,map64raw]=await Promise.all([getText(BASE),getText(MAPDATA)]);
+    const html=await getText(BASE);
     const doc=new DOMParser().parseFromString(html,'text/html');
 
     const style=doc.createElement('style');
@@ -45,23 +96,11 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
       .prep-reset{appearance:none;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--muted);padding:7px 10px;font:inherit;font-size:11px;font-weight:900;cursor:pointer}
       .prep-note{width:100%;font-size:10px;color:var(--muted)}
       .prep-groups{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-      .prep-group{padding:18px}
-      .prep-group h3{margin:0 0 8px;font-size:17px}
-      .prep-group ul{margin:0;padding:0;list-style:none}
-      .prep-group li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px;transition:.15s opacity}
-      .prep-group li:last-child{border-bottom:0}
-      .prep-check{display:grid;grid-template-columns:21px 1fr;gap:8px;align-items:start;cursor:pointer}
-      .prep-check input{width:17px;height:17px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer}
-      .prep-copy{min-width:0;transition:.15s opacity}
-      .prep-group li.done .prep-copy{opacity:.48;text-decoration:line-through;text-decoration-thickness:1.5px}
-      .prep-priority{display:inline-block;font-size:10px;font-weight:900;padding:3px 7px;border-radius:999px;background:var(--chip);color:var(--accent2);margin-left:5px}
+      .prep-group{padding:18px}.prep-group h3{margin:0 0 8px;font-size:17px}.prep-group ul{margin:0;padding:0;list-style:none}.prep-group li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.prep-group li:last-child{border-bottom:0}
+      .prep-check{display:grid;grid-template-columns:21px 1fr;gap:8px;align-items:start;cursor:pointer}.prep-check input{width:17px;height:17px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer}.prep-copy{min-width:0;transition:.15s opacity}.prep-group li.done .prep-copy{opacity:.48;text-decoration:line-through;text-decoration-thickness:1.5px}.prep-priority{display:inline-block;font-size:10px;font-weight:900;padding:3px 7px;border-radius:999px;background:var(--chip);color:var(--accent2);margin-left:5px}
       @media(max-width:680px){.prep-groups{grid-template-columns:1fr}.prep-toolbar{align-items:stretch}.prep-progress{width:100%}}
     `;
     doc.head.appendChild(style);
-
-    const map64clean=(map64raw||'').replace(/\s+/g,'');
-    const map64=map64clean+'='.repeat((4-map64clean.length%4)%4);
-    if(!map64.startsWith('/9j/'))throw new Error('invalid map jpeg data');
 
     const sections=[...doc.querySelectorAll('section')];
     const mapSec=sections.find(s=>s.querySelector('.section-title h2')?.textContent.includes('行程总览地图'));
@@ -69,105 +108,20 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
       const small=mapSec.querySelector('.section-title small');
       if(small)small.textContent='普吉主岛真实底图 · DAY1—DAY5 分色';
       const card=mapSec.querySelector('.map-card');
-      if(card)card.innerHTML=`<figure class="journey-overview"><img src="data:image/jpeg;base64,${map64}" alt="普吉岛五天四晚手绘旅程总览地图，基于普吉岛主岛位置关系绘制，并按 DAY1 至 DAY5 分色标注机场、Kata、Karon、Patong、Phuket Old Town、Rawai 与 Promthep Cape 等主要行程节点"><figcaption class="map-note">基于普吉岛主岛真实位置关系重绘，并按 DAY1—DAY5 分色展示整体动线；海上 / 跳岛部分仍属于天气条件路线。</figcaption></figure>`;
+      if(card)card.innerHTML=`<figure class="journey-overview"><img src="${MAP_URL}" alt="普吉岛五天四晚手绘旅程总览地图，基于普吉岛主岛位置关系绘制，并按 DAY1 至 DAY5 分色标注机场、Kata、Karon、Patong、Phuket Old Town、Rawai 与 Promthep Cape 等主要行程节点" decoding="async"><figcaption class="map-note">基于普吉岛主岛真实位置关系重绘，并按 DAY1—DAY5 分色展示整体动线；海上 / 跳岛部分仍属于天气条件路线。</figcaption></figure>`;
     }
 
     const todoSec=sections.find(s=>s.querySelector('.section-title h2')?.textContent.includes('待办清单'));
     if(todoSec){
-      todoSec.innerHTML=`
-        <div class="section-title"><h2>出发前准备 & 待办</h2><small>可勾选 · 本机自动保存</small></div>
-        <div class="prep-toolbar">
-          <div class="prep-progress"><span id="prepProgressText">已完成 0 / 0</span><span class="prep-progress-track"><i id="prepProgressFill" class="prep-progress-fill"></i></span></div>
-          <button id="prepReset" class="prep-reset" type="button">清空勾选</button>
-          <div class="prep-note">勾选状态保存在当前浏览器 localStorage，仅此设备 / 浏览器可见，不上传服务器。</div>
-        </div>
-        <div class="prep-groups">
-          <article class="prep-group card"><h3>🛂 证件 / 入境</h3><ul>
-            <li data-check-id="passport-original"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>护照原件</b><span class="prep-priority">最优先</span>：出门前最后再确认一次，并检查有效期。</span></label></li>
-            <li data-check-id="passport-backup"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>护照资料页备份：</b>手机离线保存一份电子版，另存到可信的云端位置。</span></label></li>
-            <li data-check-id="tdac"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>TDAC 数字入境卡：</b>抵达前按泰国官方要求完成，提交后把确认页 / QR 保存离线。</span></label></li>
-            <li data-check-id="orders-offline"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>机票与酒店订单：</b>CZ6063 / CZ6064、Metadee、Centara 的确认信息都离线保存。</span></label></li>
-            <li data-check-id="cash-proof"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>资金证明 / 泰铢现金：</b>准备适量泰铢和小额现金；最低携带要求出发前再核对泰国官方最新口径。</span></label></li>
-            <li data-check-id="insurance"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>旅行保险：</b>保单、保险公司联系方式和紧急联系人离线保存。</span></label></li>
-          </ul></article>
-
-          <article class="prep-group card"><h3>🔌 电子设备 / 网络</h3><ul>
-            <li data-check-id="phone-charger"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>手机充电器 + 数据线</b><span class="prep-priority">必带</span>。</span></label></li>
-            <li data-check-id="power-bank"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>移动电源：</b>提前充满电，按航空公司规则随身携带，不放托运行李。</span></label></li>
-            <li data-check-id="travel-adapter"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>万能转换插头：</b>带一个旅行转换插头备用。</span></label></li>
-            <li data-check-id="camera-kit"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>相机 / 运动相机：</b>如携带，确认电池、存储卡与对应充电器。</span></label></li>
-            <li data-check-id="mobile-network"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>网络：</b>提前确认国际漫游、eSIM 或当地 SIM；确保 Grab / Bolt 等打车 App 已登录可用。</span></label></li>
-            <li data-check-id="offline-guide"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>离线资料：</b>出发前至少打开一次本手册，让主要内容进入本地缓存。</span></label></li>
-          </ul></article>
-
-          <article class="prep-group card"><h3>🌧️ 雨季 / 海边用品</h3><ul>
-            <li data-check-id="rain-gear"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>折叠伞或轻便雨衣</b><span class="prep-priority">9 月建议</span>。</span></label></li>
-            <li data-check-id="waterproof"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>防水袋 / 手机防水套：</b>海边、突然阵雨和 Day 2 海上方案都用得上。</span></label></li>
-            <li data-check-id="swimwear"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>泳衣、拖鞋 / 凉鞋、快干衣物：</b>尽量轻便，湿了容易处理。</span></label></li>
-            <li data-check-id="sun-protection"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>防晒：</b>防晒用品、帽子、墨镜。</span></label></li>
-            <li data-check-id="mosquito"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>驱蚊用品：</b>尤其傍晚、绿植较多和户外用餐时。</span></label></li>
-            <li data-check-id="daily-items"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>常用物品：</b>纸巾、湿巾、创可贴及个人日常必需品。</span></label></li>
-          </ul></article>
-
-          <article class="prep-group card"><h3>⏰ 出发前 24—48h</h3><ul>
-            <li data-check-id="flight-recheck"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>航班：</b>再次确认 CZ6063 / CZ6064 状态、值机和行李额度。</span></label></li>
-            <li data-check-id="airport-transfer"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>机场接送：</b>确认 9/24 HKT → Metadee、9/28 Centara → HKT。</span></label></li>
-            <li data-check-id="day2-weather"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 2 海况：</b>看最新天气与正规运营方通知，决定跳岛还是南部海岸 B 方案。</span></label></li>
-            <li data-check-id="hotel-recheck"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>两家酒店：</b>再次确认入住 / 退房时间；Centara 两天早餐未包含。</span></label></li>
-            <li data-check-id="cash-card"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>现金 / 卡：</b>泰铢、至少一张境外可用银行卡分开放置。</span></label></li>
-            <li data-check-id="final-five"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>最后五件：</b>护照、手机、钱包、充电器、移动电源，离家前逐项摸一遍。</span></label></li>
-          </ul></article>
-
-          <article class="prep-group card"><h3>🧭 行程待办</h3><ul>
-            <li data-check-id="sea-booking"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 2 海上项目：</b>如预订，正式订单确定后再补集合点、时间和接送信息。</span></label></li>
-            <li data-check-id="day2-plan-b"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 2 B 方案：</b>海况不佳就走 Karon Viewpoint → Nai Harn → Rawai → Promthep Cape。</span></label></li>
-            <li data-check-id="day3-luggage"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 3 行李：</b>从 Metadee 退房后一路带到 Centara，贵重物品随身。</span></label></li>
-            <li data-check-id="restaurants"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>餐厅：</b>目前按区域留白，等后续补具体餐厅再锁定。</span></label></li>
-            <li data-check-id="copy-address"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>地址：</b>页面里的酒店、机场、景点等地点可直接复制，方便粘贴到打车或地图 App。</span></label></li>
-          </ul></article>
-        </div>`;
+      const groupsHtml=groups.map(([title,items])=>`<article class="prep-group card"><h3>${title}</h3><ul>${items.map(([id,text])=>`<li data-check-id="${id}"><label class="prep-check"><input type="checkbox"><span class="prep-copy">${text}</span></label></li>`).join('')}</ul></article>`).join('');
+      todoSec.innerHTML=`<div class="section-title"><h2>出发前准备 & 待办</h2><small>可勾选 · 本机自动保存</small></div><div class="prep-toolbar"><div class="prep-progress"><span id="prepProgressText">已完成 0 / 0</span><span class="prep-progress-track"><i id="prepProgressFill" class="prep-progress-fill"></i></span></div><button id="prepReset" class="prep-reset" type="button">清空勾选</button><div class="prep-note">勾选状态保存在当前浏览器 localStorage，仅此设备 / 浏览器可见，不上传服务器。</div></div><div class="prep-groups">${groupsHtml}</div>`;
 
       const checklistScript=doc.createElement('script');
-      checklistScript.textContent=`(()=>{
-        const STORAGE_KEY='travel-atlas:2026-09-24-phuket:prep-checklist:v1';
-        const items=[...document.querySelectorAll('[data-check-id]')];
-        const progressText=document.getElementById('prepProgressText');
-        const progressFill=document.getElementById('prepProgressFill');
-        const reset=document.getElementById('prepReset');
-        let state={};
-        try{state=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')||{}}catch(e){state={}}
-        const save=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}};
-        const paint=()=>{
-          let done=0;
-          items.forEach(li=>{
-            const input=li.querySelector('input[type="checkbox"]');
-            if(!input)return;
-            const checked=!!state[li.dataset.checkId];
-            input.checked=checked;
-            li.classList.toggle('done',checked);
-            if(checked)done++;
-          });
-          if(progressText)progressText.textContent='已完成 '+done+' / '+items.length;
-          if(progressFill)progressFill.style.width=(items.length?Math.round(done/items.length*100):0)+'%';
-        };
-        items.forEach(li=>{
-          const input=li.querySelector('input[type="checkbox"]');
-          if(!input)return;
-          input.addEventListener('change',()=>{
-            state[li.dataset.checkId]=input.checked;
-            save();
-            paint();
-          });
-        });
-        reset?.addEventListener('click',()=>{
-          if(!confirm('清空这台设备上的所有准备清单勾选状态？'))return;
-          state={};save();paint();
-        });
-        paint();
-      })();`;
+      checklistScript.textContent=`(()=>{const KEY='travel-atlas:2026-09-24-phuket:prep-checklist:v1';const items=[...document.querySelectorAll('[data-check-id]')],txt=document.getElementById('prepProgressText'),fill=document.getElementById('prepProgressFill'),reset=document.getElementById('prepReset');let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};const paint=()=>{let done=0;items.forEach(li=>{const input=li.querySelector('input');const checked=!!state[li.dataset.checkId];input.checked=checked;li.classList.toggle('done',checked);if(checked)done++});if(txt)txt.textContent='已完成 '+done+' / '+items.length;if(fill)fill.style.width=(items.length?Math.round(done/items.length*100):0)+'%'};items.forEach(li=>li.querySelector('input')?.addEventListener('change',e=>{state[li.dataset.checkId]=e.target.checked;save();paint()}));reset?.addEventListener('click',()=>{if(confirm('清空这台设备上的所有准备清单勾选状态？')){state={};save();paint()}});paint()})();`;
       doc.body.appendChild(checklistScript);
     }
 
+    cacheMap();
     document.open();
     document.write('<!doctype html>'+doc.documentElement.outerHTML);
     document.close();
