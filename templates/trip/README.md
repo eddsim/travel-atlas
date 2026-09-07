@@ -1,30 +1,39 @@
 # 新旅行模板
 
-这个目录不是公开页面，而是创建下一份旅行手册时的起点。
+这个目录用于创建下一份 Travel Atlas 旅行手册。
 
-## 推荐做法
+## 推荐流程
 
-1. 复制当前参考实现：
-
-```text
-public/trips/2026/09-24-phuket/
-```
-
-到新的旅行目录，例如：
+1. 复制参考实现的页面结构：
 
 ```text
-public/trips/2026/11-03-tokyo/
+public/trips/2026/09-24-phuket/index.html
 ```
 
-2. 用 `trip.example.json` 整理新旅行资料。
-3. 替换 `base.html` 中的目的地、航班 / 车次、酒店、DAY 行程、实用提示。
-4. 生成新的真实地理底图手绘地图，并作为静态图片放在当前 trip 目录。
-5. 修改 `index.html` 中：
-   - 地图资源路径
+到新目录，例如：
+
+```text
+public/trips/2026/11-03-tokyo/index.html
+```
+
+2. 用 `trip.example.json` 先整理新旅行资料。
+3. 在**新的 `index.html`** 中一次性替换：
+   - 目的地 / 日期 / 星期 / 时区
+   - 航班 / 车次 / 酒店 / 已确认订单
+   - DAY1～DAYN 时间轴
+   - 此刻关注 events 数据
+   - 交通卡数据
    - localStorage key
-   - 缓存版本号
-   - 目的地特有待办
-6. 在 `src/worker.js` 注册新短路径，例如：
+   - Day 颜色（如需要）
+   - 实用提示
+4. 生成基于真实地理位置关系的手绘地图，保存为正常静态图片。
+5. 检查 Sticky Tab：
+
+```text
+DAY1 → DAY2 → ... → DAYN → 待办
+```
+
+6. 在 `src/worker.js` 只注册新短路径；**不要在 Worker 里写目的地 UI / 行程数据**：
 
 ```js
 const TRIPS = {
@@ -33,17 +42,26 @@ const TRIPS = {
 };
 ```
 
-7. Sticky Tab 必须保持：
+7. 如果希望首次打开后离线回看地图，把新 trip 入口和关键图片加入 Service Worker `PRECACHE`。
+8. 更新 `public/index.html` 总入口。
+9. 按 `docs/TRAVEL_GUIDE_STANDARD.md` 的发布验收清单检查。
+
+## 单次旅行目录
 
 ```text
-DAY1 → DAY2 → ... → DAYN → 待办
+public/trips/2026/11-03-tokyo/
+├── index.html
+├── tokyo-journey-map.webp
+└── assets/
+    ├── hotel-area.webp
+    └── rail-guide.png
 ```
 
-8. 按 `docs/TRAVEL_GUIDE_STANDARD.md` 的“发布验收清单”逐项检查。
+原则：**一个 trip 只有一个页面源 `index.html`。** 不创建 `base.html`，也不要由页面再 fetch 另一个 HTML 来拼装。
 
-## 不要复制的内容
+## 不要直接继承的内容
 
-复制参考页面时，以下信息必须重新确认，不能因为模板里有就沿用：
+复制参考实现时，以下信息必须重新确认：
 
 - 航班 / 车次
 - 酒店
@@ -53,23 +71,21 @@ DAY1 → DAY2 → ... → DAYN → 待办
 - 天气季节提示
 - 现金 / 交通规则
 - Google Maps 地址
+- localStorage key
+- Service Worker 预缓存资源
 
 ## 图片规则
 
-地图和其他图片直接作为静态资源存储，例如：
+- 图片放 trip 目录或 `assets/`
+- 使用正常 PNG / WebP / JPEG 静态文件
+- GitHub 中应可直接预览
+- 不把大图转成 Base64 塞进 txt / HTML
+- 页面使用相对路径引用，例如：
 
-```text
-public/trips/2026/11-03-tokyo/
-├── index.html
-├── base.html
-├── trip-map.webp
-└── assets/
-    ├── hotel-area.webp
-    └── rail-pass.png
+```html
+<img src="./tokyo-journey-map.webp" alt="东京六日手绘行程总览地图">
 ```
-
-不要把大图转成 Base64 再塞进 txt / HTML。
 
 ## 数据模板
 
-`trip.example.json` 用来帮助 AI / 人工先整理信息，再生成页面。它目前不是运行时必须读取的配置文件，因此可以按目的地扩展字段，但核心字段名称尽量保持一致。
+`trip.example.json` 是 AI / 人工整理信息的输入模板，不是运行时依赖。页面发布后不需要再 fetch JSON；最终用户访问的是自包含的 `index.html` + 静态图片资源。
