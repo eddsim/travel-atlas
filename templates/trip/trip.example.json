@@ -1,0 +1,133 @@
+{
+  "trip": {
+    "slug": "YYYY-MM-DD-destination",
+    "titleZh": "目的地旅行",
+    "titleEn": "Destination Trip",
+    "startDate": "2026-11-03",
+    "endDate": "2026-11-07",
+    "days": 5,
+    "nights": 4,
+    "people": 2,
+    "theme": "城市漫游 / 海岛慢游 / 自驾环线"
+  },
+  "timezones": {
+    "origin": "Asia/Shanghai",
+    "destination": "Asia/Tokyo"
+  },
+  "transport": [
+    {
+      "type": "flight",
+      "status": "confirmed",
+      "carrier": "航空公司",
+      "number": "XX1234",
+      "date": "2026-11-03",
+      "from": {
+        "name": "出发机场",
+        "code": "AAA",
+        "terminal": "T1",
+        "time": "10:00",
+        "timezone": "Asia/Shanghai",
+        "copyText": "Airport Terminal 1"
+      },
+      "to": {
+        "name": "到达机场",
+        "code": "BBB",
+        "terminal": "T2",
+        "time": "14:00",
+        "timezone": "Asia/Tokyo",
+        "copyText": "Destination Airport Terminal 2"
+      },
+      "duration": "3h",
+      "publicExtras": ["机型", "餐食"]
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Hotel Name",
+      "checkIn": "2026-11-03 15:00",
+      "checkOut": "2026-11-05 11:00",
+      "address": "Public hotel address",
+      "phone": "+00 000 0000",
+      "breakfastIncluded": true,
+      "copyText": "Hotel Name, full address"
+    }
+  ],
+  "daysPlan": [
+    {
+      "day": 1,
+      "date": "2026-11-03",
+      "title": "抵达日",
+      "colorToken": "d1",
+      "timeline": [
+        {
+          "time": "14:00",
+          "type": "transport",
+          "title": "抵达目的地",
+          "place": "Destination Airport",
+          "copyText": "Destination Airport",
+          "mapsQuery": "Destination Airport"
+        },
+        {
+          "time": "16:00",
+          "type": "hotel",
+          "title": "酒店入住",
+          "place": "Hotel Name",
+          "copyText": "Hotel Name, full address",
+          "mapsQuery": "Hotel Name"
+        }
+      ],
+      "route": ["Destination Airport", "Hotel Name"],
+      "planB": null
+    }
+  ],
+  "places": [
+    {
+      "name": "景点名称",
+      "category": "attraction",
+      "address": "Public address",
+      "copyText": "Map searchable POI name or full address",
+      "mapsQuery": "POI name",
+      "confirmed": false
+    }
+  ],
+  "map": {
+    "asset": "trip-map.webp",
+    "style": "real-geography-hand-drawn",
+    "dayColoredRoutes": true,
+    "conditionalRoutesDashed": true
+  },
+  "checklist": {
+    "storageKey": "travel-atlas:TRIP-SLUG:prep-checklist:v1",
+    "groups": [
+      "证件 / 入境",
+      "电子设备 / 网络",
+      "天气 / 目的地装备",
+      "出发前 24—48h",
+      "行程待办"
+    ]
+  },
+  "practicalTips": [
+    {
+      "topic": "入境",
+      "content": "发布前核实最新官方要求"
+    },
+    {
+      "topic": "支付",
+      "content": "当地现金、银行卡与电子支付建议"
+    }
+  ],
+  "privacy": {
+    "neverPublish": [
+      "passportNumber",
+      "idNumber",
+      "personalPhone",
+      "bookingReference",
+      "ticketNumber",
+      "seatNumber",
+      "roomNumber",
+      "qrCode",
+      "barcode",
+      "paymentInfo"
+    ]
+  }
+}
