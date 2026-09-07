@@ -1,92 +1,52 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f7f2e7">
+<meta name="theme-color" content="#101619">
+<meta name="color-scheme" content="light dark">
 <title>普吉岛 2026 · 5天4晚旅行手册</title>
 <style>
-html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif}.loading{min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center}.loading-card{max-width:420px;background:#fffdf7;border:1px solid #ded9ca;border-radius:24px;padding:26px;box-shadow:0 14px 38px rgba(45,42,34,.08)}.loading b{display:block;font-size:20px;margin-bottom:6px}.loading span{font-size:13px;color:#77766e}
+:root{--bg:#f7f2e7;--paper:#fffdf7;--ink:#232522;--muted:#77766e;--line:#ded9ca;--accent:#1e8f73;--accent2:#d96d4c;--chip:#eee7d8;--shadow:0 14px 38px rgba(45,42,34,.08);--d1:#19875f;--d2:#1597b8;--d3:#d66b2f;--d4:#275d9e;--d5:#7655a8}
+body.night{--bg:#101619;--paper:#172024;--ink:#edf3ee;--muted:#aab7b1;--line:#314046;--accent:#72d3b9;--accent2:#ff9b7d;--chip:#263238;--shadow:0 16px 42px rgba(0,0,0,.24)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 12% 2%,rgba(55,154,126,.10),transparent 24rem),radial-gradient(circle at 92% 28%,rgba(236,122,94,.08),transparent 20rem),var(--bg);color:var(--ink);font-family:ui-rounded,"SF Pro Rounded","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.6;transition:.25s background,.25s color}a{color:inherit;text-decoration:none}.wrap{width:min(980px,100%);margin:auto;padding:18px 14px 80px}.hero{padding:22px 4px 10px}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--muted);font-weight:800}h1{font-size:clamp(30px,7vw,56px);line-height:1.05;margin:8px 0 12px;letter-spacing:-.04em}.sub{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:14px}.pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--paper);padding:5px 10px;border-radius:999px}.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.focus{padding:20px;margin:14px 0 28px}.focus-tag{display:inline-block;background:var(--accent);color:#fff;padding:6px 10px;border-radius:10px;font-weight:900;font-size:13px}.focus-title{font-size:clamp(20px,5vw,31px);font-weight:900;margin:12px 0 2px}.focus-time{font-size:13px;color:var(--muted)}.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}.count div{background:var(--chip);border-radius:16px;padding:12px 5px;text-align:center}.count b{display:block;font-size:clamp(24px,7vw,42px);line-height:1;font-variant-numeric:tabular-nums}.count span{font-size:11px;color:var(--muted);font-weight:800}section{margin:34px 0}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:0 2px 12px}.section-title h2{font-size:24px;margin:0}.section-title small{color:var(--muted)}.map-card{padding:14px;overflow:hidden}.map-card svg,.routebox svg{width:100%;height:auto;display:block}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.legend span{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}.legend i{width:9px;height:9px;border-radius:50%}.bookings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.booking{padding:16px}.booking .type{font-size:12px;color:var(--muted);font-weight:800}.booking h3{margin:4px 0 8px;font-size:18px;line-height:1.3}.row{display:flex;justify-content:space-between;gap:14px;border-top:1px dashed var(--line);padding:8px 0;font-size:13px}.row:first-of-type{border-top:0}.row span:first-child{color:var(--muted)}.ok{color:var(--accent);font-weight:900}.no{color:var(--accent2);font-weight:900}.maplink,.btn,.place-link{font-weight:850}.maplink,.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:12px;padding:8px 11px;background:var(--chip);font-size:13px;margin-top:8px}.place-link{border-bottom:1px dashed var(--accent);color:var(--accent)}.risk{border-left:5px solid var(--accent2);padding:14px;background:color-mix(in srgb,var(--accent2) 7%,var(--paper));border-radius:14px;margin-top:12px}.plan{padding:16px;margin-top:12px}.plan strong{display:block;margin-bottom:4px}.days{display:grid;gap:16px}.day{padding:18px}.dayhead{display:flex;justify-content:space-between;gap:10px;margin-bottom:5px}.dayhead h3{margin:0;font-size:21px}.daymeta{font-size:12px;color:var(--muted)}.daybadge{font-size:12px;font-weight:900;color:var(--day);white-space:nowrap}.event{display:grid;grid-template-columns:78px 1fr;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}.event:last-of-type{border-bottom:0}.t{font-weight:950;font-variant-numeric:tabular-nums}.tz{display:block;font-size:9px;color:var(--muted)}.event-title{font-weight:900}.event-desc{font-size:13px;color:var(--muted)}.flags{display:flex;gap:6px;flex-wrap:wrap}.flag{display:inline-block;font-size:10px;font-weight:900;padding:3px 7px;border-radius:999px;background:var(--chip);margin-top:5px}.flag.book{color:var(--accent2)}.flag.safe{color:var(--accent)}details.route{border-top:1px solid var(--line);padding-top:11px;margin-top:6px}summary{cursor:pointer;font-weight:900;list-style:none}summary::-webkit-details-marker{display:none}.routebox{padding-top:10px}.route-actions{display:flex;gap:8px;flex-wrap:wrap}.route-label{font-size:11px;font-weight:800;fill:currentColor}.route-path{fill:none;stroke:var(--day);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}.todo,.tips{padding:18px}.todo ul,.tips ul{margin:0;padding:0;list-style:none}.todo li,.tips li{padding:10px 0;border-bottom:1px dashed var(--line)}.todo li:last-child,.tips li:last-child{border-bottom:0}.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.option{border:1px solid var(--line);border-radius:16px;padding:12px;background:color-mix(in srgb,var(--paper) 92%,var(--chip));font-size:13px}.option b{display:block;margin-bottom:4px}.note{font-size:12px;color:var(--muted)}footer{color:var(--muted);font-size:11px;text-align:center;margin-top:40px}@media(max-width:680px){.bookings,.option-grid{grid-template-columns:1fr}.event{grid-template-columns:66px 1fr}.wrap{padding-left:12px;padding-right:12px}}
+
+.day-nav{position:sticky;top:8px;z-index:30;display:flex;gap:8px;overflow-x:auto;padding:10px 4px;margin:-14px 0 24px;scrollbar-width:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.day-nav::-webkit-scrollbar{display:none}
+.day-nav a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--paper) 92%,transparent);box-shadow:0 6px 18px rgba(0,0,0,.06);font-size:12px;font-weight:950;transition:.18s transform,.18s border-color,.18s background}
+.day-nav a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tag)}
+.day-nav a:hover{transform:translateY(-1px)}
+.day-nav a.active{border-color:var(--tag);background:color-mix(in srgb,var(--tag) 14%,var(--paper));color:var(--tag)}
+.day{scroll-margin-top:84px}
+.focus-transport{display:none;margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:18px;background:color-mix(in srgb,var(--paper) 90%,var(--chip));overflow:hidden}
+.focus-transport.show{display:block}
+.focus-transport-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.focus-transport-kind{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:950;color:var(--accent)}
+.focus-transport-status{font-size:10px;font-weight:950;padding:4px 8px;border-radius:999px;background:color-mix(in srgb,var(--accent) 13%,var(--paper));color:var(--accent)}
+.focus-transport-main{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px}
+.focus-stop{min-width:0}
+.focus-stop.right{text-align:right}
+.focus-stop .time{font-size:23px;line-height:1;font-weight:950;font-variant-numeric:tabular-nums}
+.focus-stop .code{font-size:17px;font-weight:950;margin-top:5px}
+.focus-stop .name{font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.focus-stop .zone{font-size:9px;color:var(--muted);font-weight:800}
+.focus-route-mid{text-align:center;color:var(--muted);min-width:68px}
+.focus-route-mid .number{font-size:12px;font-weight:950;color:var(--ink);white-space:nowrap}
+.focus-route-mid .arrow{font-size:20px;line-height:1;margin:2px 0}
+.focus-route-mid .duration{font-size:9px;white-space:nowrap}
+.focus-transport-extra{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;padding-top:10px;border-top:1px dashed var(--line)}
+.focus-transport-extra span{font-size:10px;font-weight:850;padding:4px 7px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.copy-inline{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;text-align:right}
+.copy-inline>:first-child{min-width:0}
+.copy-place{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:0 0 auto;border:1px solid var(--line);border-radius:9px;background:var(--chip);color:var(--muted);padding:4px 7px;font:inherit;font-size:10px;font-weight:900;line-height:1.2;cursor:pointer;vertical-align:middle;transition:.15s transform,.15s border-color,.15s color,.15s background}
+.copy-place:hover{transform:translateY(-1px);border-color:var(--accent);color:var(--accent)}
+.copy-place.copied{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--paper));color:var(--accent)}
+.copy-place.after-link{margin-left:5px}
+.focus-stop .copy-place{margin-top:5px;padding:3px 6px;font-size:9px}
+.copy-toast{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom));z-index:999;transform:translate(-50%,12px);max-width:min(88vw,520px);padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--paper) 94%,transparent);color:var(--ink);box-shadow:0 12px 36px rgba(0,0,0,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:12px;font-weight:850;opacity:0;pointer-events:none;transition:.18s opacity,.18s transform;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.copy-toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:520px){.focus-stop .time{font-size:20px}.focus-stop .code{font-size:15px}.focus-route-mid{min-width:58px}.focus-transport{padding:12px}.copy-place{padding:4px 6px}.copy-place.after-link{margin-left:4px}}
 </style>
-</head>
-<body>
-<div class="loading"><div class="loading-card"><b>正在打开普吉岛旅行手册…</b><span>加载行程、离线缓存与手绘总览地图</span></div></div>
-<script>
-(async()=>{
-  const BASE='/trips/2026/09-24-phuket/base.html';
-  const MAP_URL='/trips/2026/09-24-phuket/phuket-journey-map.png';
-  const PAGE_CACHE='travel-atlas-phuket-v12';
-
-  async function getText(url){
-    try{
-      const r=await fetch(url,{cache:'no-store'});
-      if(!r.ok)throw new Error(String(r.status));
-      const text=await r.text();
-      if('caches' in window){const c=await caches.open(PAGE_CACHE);await c.put(url,new Response(text,{headers:{'content-type':'text/html;charset=utf-8'}}));}
-      return text;
-    }catch(e){
-      if('caches' in window){const c=await caches.open(PAGE_CACHE),hit=await c.match(url);if(hit)return hit.text();}
-      throw e;
-    }
-  }
-
-  async function cacheMap(){
-    if(!('caches' in window))return;
-    try{
-      const c=await caches.open(PAGE_CACHE);
-      const r=await fetch(MAP_URL,{cache:'reload'});
-      if(r.ok)await c.put(MAP_URL,r.clone());
-    }catch(e){}
-  }
-
-  const groups=[
-    ['🛂 证件 / 入境',[
-      ['passport-original','<b>护照原件</b><span class="prep-priority">最优先</span>：出门前最后再确认一次，并检查有效期。'],
-      ['passport-backup','<b>护照资料页备份：</b>手机离线保存一份电子版，另存到可信的云端位置。'],
-      ['tdac','<b>TDAC 数字入境卡：</b>抵达前按泰国官方要求完成，提交后把确认页 / QR 保存离线。'],
-      ['orders-offline','<b>机票与酒店订单：</b>CZ6063 / CZ6064、Metadee、Centara 的确认信息都离线保存。'],
-      ['cash-proof','<b>资金证明 / 泰铢现金：</b>准备适量泰铢和小额现金；最低携带要求出发前再核对泰国官方最新口径。'],
-      ['insurance','<b>旅行保险：</b>保单、保险公司联系方式和紧急联系人离线保存。']
-    ]],
-    ['🔌 电子设备 / 网络',[
-      ['phone-charger','<b>手机充电器 + 数据线</b><span class="prep-priority">必带</span>。'],
-      ['power-bank','<b>移动电源：</b>提前充满电，按航空公司规则随身携带，不放托运行李。'],
-      ['travel-adapter','<b>万能转换插头：</b>带一个旅行转换插头备用。'],
-      ['camera-kit','<b>相机 / 运动相机：</b>如携带，确认电池、存储卡与对应充电器。'],
-      ['mobile-network','<b>网络：</b>提前确认国际漫游、eSIM 或当地 SIM；确保 Grab / Bolt 等打车 App 已登录可用。'],
-      ['offline-guide','<b>离线资料：</b>出发前至少打开一次本手册，让主要内容进入本地缓存。']
-    ]],
-    ['🌧️ 雨季 / 海边用品',[
-      ['rain-gear','<b>折叠伞或轻便雨衣</b><span class="prep-priority">9 月建议</span>。'],
-      ['waterproof','<b>防水袋 / 手机防水套：</b>海边、突然阵雨和 Day 2 海上方案都用得上。'],
-      ['swimwear','<b>泳衣、拖鞋 / 凉鞋、快干衣物：</b>尽量轻便，湿了容易处理。'],
-      ['sun-protection','<b>防晒：</b>防晒用品、帽子、墨镜。'],
-      ['mosquito','<b>驱蚊用品：</b>尤其傍晚、绿植较多和户外用餐时。'],
-      ['daily-items','<b>常用物品：</b>纸巾、湿巾、创可贴及个人日常必需品。']
-    ]],
-    ['⏰ 出发前 24—48h',[
-      ['flight-recheck','<b>航班：</b>再次确认 CZ6063 / CZ6064 状态、值机和行李额度。'],
-      ['airport-transfer','<b>机场接送：</b>确认 9/24 HKT → Metadee、9/28 Centara → HKT。'],
-      ['day2-weather','<b>Day 2 海况：</b>看最新天气与正规运营方通知，决定跳岛还是南部海岸 B 方案。'],
-      ['hotel-recheck','<b>两家酒店：</b>再次确认入住 / 退房时间；Centara 两天早餐未包含。'],
-      ['cash-card','<b>现金 / 卡：</b>泰铢、至少一张境外可用银行卡分开放置。'],
-      ['final-five','<b>最后五件：</b>护照、手机、钱包、充电器、移动电源，离家前逐项摸一遍。']
-    ]],
-    ['🧭 行程待办',[
-      ['sea-booking','<b>Day 2 海上项目：</b>如预订，正式订单确定后再补集合点、时间和接送信息。'],
-      ['day2-plan-b','<b>Day 2 B 方案：</b>海况不佳就走 Karon Viewpoint → Nai Harn → Rawai → Promthep Cape。'],
-      ['day3-luggage','<b>Day 3 行李：</b>从 Metadee 退房后一路带到 Centara，贵重物品随身。'],
-      ['restaurants','<b>餐厅：</b>目前按区域留白，等后续补具体餐厅再锁定。'],
-      ['copy-address','<b>地址：</b>页面里的酒店、机场、景点等地点可直接复制，方便粘贴到打车或地图 App。']
-    ]]
-  ];
-
-  try{
-    const html=await getText(BASE);
-    const doc=new DOMParser().parseFromString(html,'text/html');
-
-    const style=doc.createElement('style');
-    style.textContent=`
+<style>
       .journey-overview{margin:0;display:grid;gap:12px}
       .journey-overview img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line);background:#f8f4ec}
       #prep{scroll-margin-top:84px}
@@ -100,47 +60,237 @@ html,body{margin:0;min-height:100%;background:#f7f2e7;color:#232522;font-family:
       .prep-group{padding:18px}.prep-group h3{margin:0 0 8px;font-size:17px}.prep-group ul{margin:0;padding:0;list-style:none}.prep-group li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.prep-group li:last-child{border-bottom:0}
       .prep-check{display:grid;grid-template-columns:21px 1fr;gap:8px;align-items:start;cursor:pointer}.prep-check input{width:17px;height:17px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer}.prep-copy{min-width:0;transition:.15s opacity}.prep-group li.done .prep-copy{opacity:.48;text-decoration:line-through;text-decoration-thickness:1.5px}.prep-priority{display:inline-block;font-size:10px;font-weight:900;padding:3px 7px;border-radius:999px;background:var(--chip);color:var(--accent2);margin-left:5px}
       @media(max-width:680px){.prep-groups{grid-template-columns:1fr}.prep-toolbar{align-items:stretch}.prep-progress{width:100%}}
-    `;
-    doc.head.appendChild(style);
+    </style></head>
+<body class="">
+<main class="wrap">
+<header class="hero">
+  <div class="eyebrow">PHUKET · THAILAND · 2026</div>
+  <h1>普吉岛<br>5天4晚旅行手册</h1>
+  <div class="sub">
+    <span class="pill">👥 2人</span>
+    <span class="pill">📅 9/24 Thu — 9/28 Mon</span>
+    <span class="pill">🏝️ Kata → 南部海岸/海上 → Patong → Karon → Old Town</span>
+    <span class="pill">🕘 普吉 UTC+7 · 广州 UTC+8</span>
+  </div>
+</header>
 
-    const sections=[...doc.querySelectorAll('section')];
-    const mapSec=sections.find(s=>s.querySelector('.section-title h2')?.textContent.includes('行程总览地图'));
-    if(mapSec){
-      const small=mapSec.querySelector('.section-title small');
-      if(small)small.textContent='普吉主岛真实底图 · DAY1—DAY5 分色';
-      const card=mapSec.querySelector('.map-card');
-      if(card)card.innerHTML=`<figure class="journey-overview"><img src="${MAP_URL}" alt="普吉岛五天四晚手绘旅程总览地图，基于普吉岛主岛位置关系绘制，并按 DAY1 至 DAY5 分色标注机场、Kata、Karon、Patong、Phuket Old Town、Rawai 与 Promthep Cape 等主要行程节点" decoding="async"><figcaption class="map-note">基于普吉岛主岛真实位置关系重绘，并按 DAY1—DAY5 分色展示整体动线；海上 / 跳岛部分仍属于天气条件路线。</figcaption></figure>`;
-    }
+<section class="focus card" aria-live="polite">
+  <span class="focus-tag">此刻关注</span>
+  <div id="nextTitle" class="focus-title">CZ6063 · 广州白云 T2 起飞</div>
+  <div id="nextTime" class="focus-time">9月24日周四 12:55 · 广州 UTC+8</div>
+  <div id="focusTransport" class="focus-transport show" aria-live="polite"><div class="focus-transport-top"><div class="focus-transport-kind">✈️ 航班 · 南方航空</div><div class="focus-transport-status">已出票</div></div><div class="focus-transport-main"><div class="focus-stop"><div class="time">12:55</div><div class="code">CAN T2</div><div class="name">广州白云国际机场</div><div class="zone">UTC+8</div><button type="button" class="copy-place" data-copy-text="广州白云国际机场 T2">⧉ <span>复制地点</span></button></div><div class="focus-route-mid"><div class="number">CZ6063</div><div class="arrow">→</div><div class="duration">3时45分</div></div><div class="focus-stop right"><div class="time">15:40</div><div class="code">HKT</div><div class="name">普吉国际机场 · 国际航站楼</div><div class="zone">UTC+7</div><button type="button" class="copy-place" data-copy-text="Phuket International Airport International Terminal">⧉ <span>复制地点</span></button></div></div><div class="focus-transport-extra"><span>A321 NEO</span><span>有餐食</span><span>9月24日</span></div></div>
+  <div class="count">
+    <div><b id="cdD">17</b><span>天</span></div>
+    <div><b id="cdH">00</b><span>时</span></div>
+    <div><b id="cdM">41</b><span>分</span></div>
+    <div><b id="cdS">41</b><span>秒</span></div>
+  </div>
+</section>
 
-    const todoSec=sections.find(s=>s.querySelector('.section-title h2')?.textContent.includes('待办清单'));
-    if(todoSec){
-      todoSec.id='prep';
-      const dayNav=doc.querySelector('.day-nav');
-      if(dayNav&&!dayNav.querySelector('[data-day="prep"]')){
-        const prepTab=doc.createElement('a');
-        prepTab.href='#prep';
-        prepTab.dataset.day='prep';
-        prepTab.style.setProperty('--tag','var(--accent2)');
-        prepTab.textContent='待办';
-        dayNav.appendChild(prepTab);
-      }
+<nav class="day-nav" aria-label="按天快速导航">
+  <a href="#day1" data-day="day1" style="--tag:var(--d1)">DAY1 · 9/24</a>
+  <a href="#day2" data-day="day2" style="--tag:var(--d2)">DAY2 · 9/25</a>
+  <a href="#day3" data-day="day3" style="--tag:var(--d3)">DAY3 · 9/26</a>
+  <a href="#day4" data-day="day4" style="--tag:var(--d4)">DAY4 · 9/27</a>
+  <a href="#day5" data-day="day5" style="--tag:var(--d5)">DAY5 · 9/28</a>
+<a href="#prep" data-day="prep" style="--tag: var(--accent2);">待办</a></nav>
 
-      const groupsHtml=groups.map(([title,items])=>`<article class="prep-group card"><h3>${title}</h3><ul>${items.map(([id,text])=>`<li data-check-id="${id}"><label class="prep-check"><input type="checkbox"><span class="prep-copy">${text}</span></label></li>`).join('')}</ul></article>`).join('');
-      todoSec.innerHTML=`<div class="section-title"><h2>出发前准备 & 待办</h2><small>可勾选 · 本机自动保存</small></div><div class="prep-toolbar"><div class="prep-progress"><span id="prepProgressText">已完成 0 / 0</span><span class="prep-progress-track"><i id="prepProgressFill" class="prep-progress-fill"></i></span></div><button id="prepReset" class="prep-reset" type="button">清空勾选</button><div class="prep-note">勾选状态保存在当前浏览器 localStorage，仅此设备 / 浏览器可见，不上传服务器。</div></div><div class="prep-groups">${groupsHtml}</div>`;
+<section>
+  <div class="section-title"><h2>行程总览地图</h2><small>普吉主岛真实底图 · DAY1—DAY5 分色</small></div>
+  <div class="map-card card"><figure class="journey-overview"><img src="/trips/2026/09-24-phuket/phuket-journey-map.png" alt="普吉岛五天四晚手绘旅程总览地图，基于普吉岛主岛位置关系绘制，并按 DAY1 至 DAY5 分色标注机场、Kata、Karon、Patong、Phuket Old Town、Rawai 与 Promthep Cape 等主要行程节点" decoding="async"><figcaption class="map-note">基于普吉岛主岛真实位置关系重绘，并按 DAY1—DAY5 分色展示整体动线；海上 / 跳岛部分仍属于天气条件路线。</figcaption></figure></div>
+</section>
 
-      const checklistScript=doc.createElement('script');
-      checklistScript.textContent=`(()=>{const KEY='travel-atlas:2026-09-24-phuket:prep-checklist:v1';const items=[...document.querySelectorAll('[data-check-id]')],txt=document.getElementById('prepProgressText'),fill=document.getElementById('prepProgressFill'),reset=document.getElementById('prepReset');let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};const paint=()=>{let done=0;items.forEach(li=>{const input=li.querySelector('input');const checked=!!state[li.dataset.checkId];input.checked=checked;li.classList.toggle('done',checked);if(checked)done++});if(txt)txt.textContent='已完成 '+done+' / '+items.length;if(fill)fill.style.width=(items.length?Math.round(done/items.length*100):0)+'%'};items.forEach(li=>li.querySelector('input')?.addEventListener('change',e=>{state[li.dataset.checkId]=e.target.checked;save();paint()}));reset?.addEventListener('click',()=>{if(confirm('清空这台设备上的所有准备清单勾选状态？')){state={};save();paint()}});paint()})();`;
-      doc.body.appendChild(checklistScript);
-    }
+<section>
+  <div class="section-title"><h2>已确认订单</h2><small>公开页不放个人敏感信息</small></div>
+  <div class="bookings">
+    <article class="booking card">
+      <div class="type">✈️ 去程 · 已出票</div><h3>南方航空 CZ6063</h3>
+      <div class="row"><span>9/24 起飞</span><b>12:55 · CAN T2 · UTC+8</b></div>
+      <div class="row"><span>9/24 抵达</span><b>15:40 · HKT 国际 · UTC+7</b></div>
+      <div class="row"><span>机型</span><span>A321 NEO · 有餐食</span></div>
+      <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Guangzhou%20Baiyun%20International%20Airport%20Terminal%202" data-copy-ready="1">↗ 广州白云 T2</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Guangzhou Baiyun International Airport Terminal 2">⧉ <span>复制</span></button>
+      <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Phuket%20International%20Airport" data-copy-ready="1">↗ 普吉 HKT</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Phuket International Airport">⧉ <span>复制</span></button>
+    </article>
 
-    cacheMap();
-    document.open();
-    document.write('<!doctype html>'+doc.documentElement.outerHTML);
-    document.close();
-  }catch(err){
-    document.body.innerHTML='<div class="loading"><div class="loading-card"><b>手册加载失败</b><span>请联网刷新一次；成功打开后会自动保留离线缓存。</span></div></div>';
-  }
+    <article class="booking card">
+      <div class="type">🏨 9/24—9/26 · 已确认</div><h3>Metadee Concept Hotel</h3>
+      <div class="row"><span>入住 / 退房</span><b>14:00后 / 12:00前</b></div>
+      <div class="row"><span>餐食</span><b class="ok">含早餐</b></div>
+      <div class="row" data-copy-ready="1"><span>地址</span><span class="copy-inline"><span>66 Kata Rd, Karon, Phuket 83100</span><button type="button" class="copy-place" aria-label="复制地址" data-copy-text="66 Kata Rd, Karon, Phuket 83100">⧉ <span>复制</span></button></span></div>
+      <div class="row"><span>电话</span><a class="place-link" href="tel:+6676337888">+66 76 337 888</a></div>
+      <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Metadee%20Concept%20Hotel%20Phuket&amp;travelmode=driving" data-copy-ready="1">↗ Google 地图导航</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Metadee Concept Hotel Phuket">⧉ <span>复制</span></button>
+    </article>
+
+    <article class="booking card">
+      <div class="type">🏨 9/26—9/28 · 已确认</div><h3>Centara Karon Resort Phuket</h3>
+      <div class="row"><span>入住 / 退房</span><b>15:00后 / 12:00前</b></div>
+      <div class="row"><span>餐食</span><b class="no">不含早餐</b></div>
+      <div class="row" data-copy-ready="1"><span>地址</span><span class="copy-inline"><span>502/3 Patak Rd, Karon Beach, Phuket 83100</span><button type="button" class="copy-place" aria-label="复制地址" data-copy-text="502/3 Patak Rd, Karon Beach, Phuket 83100">⧉ <span>复制</span></button></span></div>
+      <div class="row"><span>电话</span><a class="place-link" href="tel:+6676396200">+66 76 396 200</a></div>
+      <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Centara%20Karon%20Resort%20Phuket&amp;travelmode=driving" data-copy-ready="1">↗ Google 地图导航</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Centara Karon Resort Phuket">⧉ <span>复制</span></button>
+    </article>
+
+    <article class="booking card">
+      <div class="type">✈️ 返程 · 已出票</div><h3>南方航空 CZ6064</h3>
+      <div class="row"><span>9/28 起飞</span><b>16:40 · HKT 国际 · UTC+7</b></div>
+      <div class="row"><span>9/28 抵达</span><b>21:40 · CAN T2 · UTC+8</b></div>
+      <div class="row"><span>机型</span><span>A320-200 NEO · 有餐食</span></div>
+      <a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Phuket%20International%20Airport" data-copy-ready="1">↗ 普吉 HKT</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Phuket International Airport">⧉ <span>复制</span></button>
+    </article>
+  </div>
+  <div class="risk"><b>仍未确认：</b>机场接送、海上项目订单。Day 2 先保留 A/B 两套路线；海上行程只在正规运营方确认运行、天气和海况允许，并符合参与者年龄与监护要求时执行。</div>
+</section>
+
+<section>
+  <div class="section-title"><h2>逐日行程</h2><small>按你之前的行程图重排，并修正时间冲突</small></div>
+  <div class="days">
+
+    <article id="day1" class="day card" style="--day:var(--d1)">
+      <div class="dayhead"><div><h3>Day 1 · 抵达普吉 → Kata 夜市</h3><div class="daymeta">9/24 Thu · 落地后只安排酒店周边</div></div><span class="daybadge">抵达日</span></div>
+      <div class="event"><div class="t">12:55<span class="tz">广州 UTC+8</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Guangzhou%20Baiyun%20International%20Airport%20Terminal%202" data-copy-ready="1">广州白云 T2</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Guangzhou Baiyun International Airport Terminal 2">⧉ <span>复制</span></button> 起飞 · CZ6063</div></div></div>
+      <div class="event"><div class="t">15:40<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">抵达 <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Phuket%20International%20Airport" data-copy-ready="1">HKT 普吉国际机场</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Phuket International Airport">⧉ <span>复制</span></button></div><div class="event-desc">入境、取行李、叫车留足缓冲，不在落地后一小时内安排固定预约。</div></div></div>
+      <div class="event"><div class="t">17:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">机场 → <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Metadee%20Concept%20Hotel%20Phuket&amp;travelmode=driving" data-copy-ready="1">Metadee Concept Hotel</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Metadee Concept Hotel Phuket">⧉ <span>复制</span></button></div><div class="event-desc">按约 60—90 分钟预留，雨季与晚高峰以当天路况为准。</div></div></div>
+      <div class="event"><div class="t">18:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">入住、稍作休息</div></div></div>
+      <div class="event"><div class="t">19:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">步行 / 短程车前往 <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Kata%20Night%20Market%20Phuket&amp;travelmode=walking" data-copy-ready="1">Kata Night Market</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Kata Night Market Phuket">⧉ <span>复制</span></button></div><div class="event-desc">解决第一晚晚餐、逛水果与小吃摊；下雨也保留“酒店附近吃饭”的退路。</div></div></div>
+      <div class="event"><div class="t">21:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">返回酒店休息</div></div></div>
+      <details class="route"><summary>展开 Day 1 路线图 ＋</summary><div class="routebox"><svg viewBox="0 0 700 150"><path class="route-path" d="M55 72 C170 28 280 112 390 68 S555 45 650 72"></path><circle cx="55" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="35" y="111" class="route-label">HKT</text><circle cx="390" cy="68" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="344" y="111" class="route-label">Metadee</text><circle cx="650" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="594" y="111" class="route-label">Kata Night Market</text></svg><div class="route-actions"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;origin=Phuket%20International%20Airport&amp;destination=Kata%20Night%20Market%20Phuket&amp;waypoints=Metadee%20Concept%20Hotel%20Phuket&amp;travelmode=driving">↗ 全天多点导航</a></div></div></details>
+    </article>
+
+    <article id="day2" class="day card" style="--day:var(--d2)">
+      <div class="dayhead"><div><h3>Day 2 · 跳岛 or 南部海岸线</h3><div class="daymeta">9/25 Fri · 天气决定，不硬上船</div></div><span class="daybadge">A/B 方案</span></div>
+      <div class="option-grid">
+        <div class="option"><b>方案 A · 海上项目</b>07:00 左右按订单集合 / 接送 → 白天海上行程 → 傍晚回酒店。<br><span class="note">具体集合点、船程和活动内容等正式订单后再落到分钟级。</span></div>
+        <div class="option"><b>方案 B · 南部海岸线</b>Karon Viewpoint → Nai Harn → Rawai 一带 → Promthep Cape 日落 → Kata。<br><span class="note">海况不理想时直接切换，不损失一天。</span></div>
+      </div>
+      <div class="event"><div class="t">07:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Metadee 早餐 + 海况最终确认</div><div class="flags"><span class="flag book">海上方案需提前确认</span><span class="flag safe">安全优先</span></div></div></div>
+      <div class="event"><div class="t">09:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">若走 B 方案：从 Kata 出发</div></div></div>
+      <div class="event"><div class="t">09:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Karon%20Viewpoint%20Phuket&amp;travelmode=driving" data-copy-ready="1">Karon Viewpoint</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Karon Viewpoint Phuket">⧉ <span>复制</span></button></div><div class="event-desc">短停看 Kata Noi / Kata / Karon 三湾视角。</div></div></div>
+      <div class="event"><div class="t">10:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Nai%20Harn%20Beach%20Phuket&amp;travelmode=driving" data-copy-ready="1">Nai Harn Beach</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Nai Harn Beach Phuket">⧉ <span>复制</span></button> / 周边散步</div><div class="event-desc">雨大或风强时缩短海边停留，改咖啡或室内休息。</div></div></div>
+      <div class="event"><div class="t">12:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rawai%20Phuket&amp;travelmode=driving" data-copy-ready="1">Rawai 一带</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Rawai Phuket">⧉ <span>复制</span></button>午餐</div><div class="event-desc">具体餐厅后续再补，不先锁死。</div></div></div>
+      <div class="event"><div class="t">16:45<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">前往 <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Promthep%20Cape%20Phuket&amp;travelmode=driving" data-copy-ready="1">Promthep Cape 神仙半岛</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Promthep Cape Phuket">⧉ <span>复制</span></button></div><div class="event-desc">9/25 日落大约 18:20；原行程图的 14:00 太早，这里改成傍晚抵达。若云雨很重，不专门等日落。</div></div></div>
+      <div class="event"><div class="t">19:15<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">返回 Kata / Metadee</div></div></div>
+      <details class="route"><summary>展开 Day 2 路线图 ＋</summary><div class="routebox"><svg viewBox="0 0 700 155"><path class="route-path" d="M55 72 C135 25 190 105 270 70 S405 35 480 74 S575 110 650 70"></path><circle cx="55" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="25" y="112" class="route-label">Metadee</text><circle cx="270" cy="70" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="218" y="112" class="route-label">Karon Viewpoint</text><circle cx="480" cy="74" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="431" y="116" class="route-label">Nai Harn</text><circle cx="650" cy="70" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="595" y="112" class="route-label">Promthep</text></svg><div class="route-actions"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;origin=Metadee%20Concept%20Hotel%20Phuket&amp;destination=Metadee%20Concept%20Hotel%20Phuket&amp;waypoints=Karon%20Viewpoint%20Phuket%7CNai%20Harn%20Beach%20Phuket%7CRawai%20Phuket%7CPromthep%20Cape%20Phuket&amp;travelmode=driving">↗ B 方案全天多点导航</a><span class="btn">A 方案：待正式订单后生成</span></div></div></details>
+    </article>
+
+    <article id="day3" class="day card" style="--day:var(--d3)">
+      <div class="dayhead"><div><h3>Day 3 · Tiger Kingdom → Patong → Karon</h3><div class="daymeta">9/26 Sat · 把江西冷主购物放在今天</div></div><span class="daybadge">换酒店 + 购物</span></div>
+      <div class="event"><div class="t">09:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Metadee 早餐、收拾行李、退房</div><div class="event-desc">第一家含早餐；退房前把贵重物品随身带好。</div></div></div>
+      <div class="event"><div class="t">10:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Tiger%20Kingdom%20Phuket&amp;travelmode=driving" data-copy-ready="1">Tiger Kingdom Phuket</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Tiger Kingdom Phuket">⧉ <span>复制</span></button> · 餐厅 / 观赏区</div><div class="event-desc">按你之前的“老虎咖啡厅体验”保留为观赏、餐饮行程；不安排与老虎近距离互动。</div></div></div>
+      <div class="event"><div class="t">12:15<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">午餐 + 前往 Patong</div></div></div>
+      <div class="event"><div class="t">13:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Jungceylon%20Shopping%20Center%20Phuket&amp;travelmode=driving" data-copy-ready="1">Jungceylon 江西冷</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Jungceylon Shopping Center Phuket">⧉ <span>复制</span></button> + <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Big%20C%20Extra%20Jungceylon%20Phuket&amp;travelmode=driving" data-copy-ready="1">Big C</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Big C Extra Jungceylon Phuket">⧉ <span>复制</span></button></div><div class="event-desc">药妆、零食、伴手礼集中在今天解决，避免返程日再绕去芭东。</div></div></div>
+      <div class="event"><div class="t">18:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Patong 晚餐</div><div class="event-desc">具体餐厅后续再补；不把酒吧街作为固定行程。</div></div></div>
+      <div class="event"><div class="t">20:15<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Patong → <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Centara%20Karon%20Resort%20Phuket&amp;travelmode=driving" data-copy-ready="1">Centara Karon Resort Phuket</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Centara Karon Resort Phuket">⧉ <span>复制</span></button></div><div class="event-desc">周六晚路况可能比图里“15分钟”慢，按 25—40 分钟预留。</div></div></div>
+      <div class="event"><div class="t">21:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">入住 Centara，休息</div></div></div>
+      <details class="route"><summary>展开 Day 3 路线图 ＋</summary><div class="routebox"><svg viewBox="0 0 700 155"><path class="route-path" d="M50 72 C145 25 225 108 315 68 S470 32 560 70 S625 92 660 72"></path><circle cx="50" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="12" y="112" class="route-label">Metadee</text><circle cx="315" cy="68" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="253" y="112" class="route-label">Tiger Kingdom</text><circle cx="560" cy="70" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="510" y="112" class="route-label">Jungceylon</text><circle cx="660" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="620" y="112" class="route-label">Centara</text></svg><div class="route-actions"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;origin=Metadee%20Concept%20Hotel%20Phuket&amp;destination=Centara%20Karon%20Resort%20Phuket&amp;waypoints=Tiger%20Kingdom%20Phuket%7CJungceylon%20Shopping%20Center%20Phuket&amp;travelmode=driving">↗ 全天多点导航</a></div></div></details>
+    </article>
+
+    <article id="day4" class="day card" style="--day:var(--d4)">
+      <div class="dayhead"><div><h3>Day 4 · Phuket Old Town + 周日夜市</h3><div class="daymeta">9/27 Sun · 周日限定主线</div></div><span class="daybadge">老城日</span></div>
+      <div class="event"><div class="t">08:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Karon 附近早餐</div><div class="event-desc">Centara 不含早餐，具体餐厅后续再补。</div></div></div>
+      <div class="event"><div class="t">10:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Karon → <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Phuket%20Old%20Town&amp;travelmode=driving" data-copy-ready="1">Phuket Old Town</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Phuket Old Town">⧉ <span>复制</span></button></div><div class="event-desc">按 35—50 分钟预留，周日进城可能更慢。</div></div></div>
+      <div class="event"><div class="t">11:15<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">彩色老屋 / 咖啡 / 小店慢逛</div><div class="event-desc"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Soi%20Romanee%20Phuket" data-copy-ready="1">Soi Romanee</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Soi Romanee Phuket">⧉ <span>复制</span></button>、Thalang Rd 一带为主。</div></div></div>
+      <div class="event"><div class="t">13:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">老镇午餐</div><div class="event-desc">餐厅后续再补，避免现在用网红店把路线锁死。</div></div></div>
+      <div class="event"><div class="t">14:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Phuket%20Thai%20Hua%20Museum" data-copy-ready="1">Phuket Thai Hua Museum</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Phuket Thai Hua Museum">⧉ <span>复制</span></button> / 街头壁画 / 伴手礼</div></div></div>
+      <div class="event"><div class="t">16:00<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Phuket%20Sunday%20Walking%20Street%20Thalang%20Road" data-copy-ready="1">Lard Yai · 周日步行街</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Phuket Sunday Walking Street Thalang Road">⧉ <span>复制</span></button></div><div class="event-desc">周日约 16:00 开始，边逛边解决晚饭、买手工艺与小吃。</div></div></div>
+      <div class="event"><div class="t">20:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">离开老镇，返回 Karon</div></div></div>
+      <div class="event"><div class="t">21:15<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">回 Centara 休息</div></div></div>
+      <details class="route"><summary>展开 Day 4 路线图 ＋</summary><div class="routebox"><svg viewBox="0 0 700 155"><path class="route-path" d="M55 72 C165 28 255 110 355 68 S520 35 645 72"></path><circle cx="55" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="17" y="112" class="route-label">Centara</text><circle cx="355" cy="68" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="297" y="112" class="route-label">Thai Hua</text><circle cx="645" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="592" y="112" class="route-label">Thalang Rd</text></svg><div class="route-actions"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;origin=Centara%20Karon%20Resort%20Phuket&amp;destination=Centara%20Karon%20Resort%20Phuket&amp;waypoints=Phuket%20Thai%20Hua%20Museum%7CSoi%20Romanee%20Phuket%7CPhuket%20Sunday%20Walking%20Street%20Thalang%20Road&amp;travelmode=driving">↗ 全天多点导航</a></div></div></details>
+    </article>
+
+    <article id="day5" class="day card" style="--day:var(--d5)">
+      <div class="dayhead"><div><h3>Day 5 · Karon 慢上午 → 返程</h3><div class="daymeta">9/28 Mon · 16:40 国际航班是硬锚点</div></div><span class="daybadge">返程日</span></div>
+      <div class="event"><div class="t">08:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Karon 附近早餐</div><div class="event-desc">第二家酒店不含早。</div></div></div>
+      <div class="event"><div class="t">09:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title"><a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Karon%20Beach%20Phuket&amp;travelmode=walking" data-copy-ready="1">Karon Beach</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Karon Beach Phuket">⧉ <span>复制</span></button> / 酒店最后放松</div></div></div>
+      <div class="event"><div class="t">10:30<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Karon 周边最后补货 + 回房整理</div><div class="event-desc">不再安排 10:00 江西冷：Jungceylon 主商场 11:00 才开，而且返程日上午绕去 Patong 会压缩机场缓冲。主购物已经放到 Day 3。</div></div></div>
+      <div class="event"><div class="t">11:45<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">完成退房</div><div class="event-desc">酒店要求 12:00 前退房。</div></div></div>
+      <div class="event"><div class="t">12:10<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">Centara → <a class="place-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Phuket%20International%20Airport&amp;travelmode=driving" data-copy-ready="1">HKT 普吉国际机场</a><button type="button" class="copy-place after-link" aria-label="复制地点" data-copy-text="Phuket International Airport">⧉ <span>复制</span></button></div><div class="event-desc">按 70—90 分钟预留，目标约 13:20—13:40 到机场。</div></div></div>
+      <div class="event"><div class="t">16:40<span class="tz">普吉 UTC+7</span></div><div><div class="event-title">CZ6064 起飞</div></div></div>
+      <div class="event"><div class="t">21:40<span class="tz">广州 UTC+8</span></div><div><div class="event-title">抵达广州白云 T2</div></div></div>
+      <details class="route"><summary>展开 Day 5 路线图 ＋</summary><div class="routebox"><svg viewBox="0 0 700 150"><path class="route-path" d="M70 72 C230 22 440 118 630 70"></path><circle cx="70" cy="72" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="29" y="112" class="route-label">Centara</text><circle cx="630" cy="70" r="8" fill="var(--paper)" stroke="var(--day)" stroke-width="4"></circle><text x="610" y="112" class="route-label">HKT</text></svg><div class="route-actions"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;origin=Centara%20Karon%20Resort%20Phuket&amp;destination=Phuket%20International%20Airport&amp;travelmode=driving">↗ 返程导航</a></div></div></details>
+    </article>
+  </div>
+</section>
+
+<section id="prep"><div class="section-title"><h2>出发前准备 &amp; 待办</h2><small>可勾选 · 本机自动保存</small></div><div class="prep-toolbar"><div class="prep-progress"><span id="prepProgressText">已完成 0 / 29</span><span class="prep-progress-track"><i id="prepProgressFill" class="prep-progress-fill" style="width: 0%;"></i></span></div><button id="prepReset" class="prep-reset" type="button">清空勾选</button><div class="prep-note">勾选状态保存在当前浏览器 localStorage，仅此设备 / 浏览器可见，不上传服务器。</div></div><div class="prep-groups"><article class="prep-group card"><h3>🛂 证件 / 入境</h3><ul><li data-check-id="passport-original"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>护照原件</b><span class="prep-priority">最优先</span>：出门前最后再确认一次，并检查有效期。</span></label></li><li data-check-id="passport-backup"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>护照资料页备份：</b>手机离线保存一份电子版，另存到可信的云端位置。</span></label></li><li data-check-id="tdac"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>TDAC 数字入境卡：</b>抵达前按泰国官方要求完成，提交后把确认页 / QR 保存离线。</span></label></li><li data-check-id="orders-offline"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>机票与酒店订单：</b>CZ6063 / CZ6064、Metadee、Centara 的确认信息都离线保存。</span></label></li><li data-check-id="cash-proof"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>资金证明 / 泰铢现金：</b>准备适量泰铢和小额现金；最低携带要求出发前再核对泰国官方最新口径。</span></label></li><li data-check-id="insurance"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>旅行保险：</b>保单、保险公司联系方式和紧急联系人离线保存。</span></label></li></ul></article><article class="prep-group card"><h3>🔌 电子设备 / 网络</h3><ul><li data-check-id="phone-charger"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>手机充电器 + 数据线</b><span class="prep-priority">必带</span>。</span></label></li><li data-check-id="power-bank"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>移动电源：</b>提前充满电，按航空公司规则随身携带，不放托运行李。</span></label></li><li data-check-id="travel-adapter"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>万能转换插头：</b>带一个旅行转换插头备用。</span></label></li><li data-check-id="camera-kit"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>相机 / 运动相机：</b>如携带，确认电池、存储卡与对应充电器。</span></label></li><li data-check-id="mobile-network"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>网络：</b>提前确认国际漫游、eSIM 或当地 SIM；确保 Grab / Bolt 等打车 App 已登录可用。</span></label></li><li data-check-id="offline-guide"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>离线资料：</b>出发前至少打开一次本手册，让主要内容进入本地缓存。</span></label></li></ul></article><article class="prep-group card"><h3>🌧️ 雨季 / 海边用品</h3><ul><li data-check-id="rain-gear"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>折叠伞或轻便雨衣</b><span class="prep-priority">9 月建议</span>。</span></label></li><li data-check-id="waterproof"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>防水袋 / 手机防水套：</b>海边、突然阵雨和 Day 2 海上方案都用得上。</span></label></li><li data-check-id="swimwear"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>泳衣、拖鞋 / 凉鞋、快干衣物：</b>尽量轻便，湿了容易处理。</span></label></li><li data-check-id="sun-protection"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>防晒：</b>防晒用品、帽子、墨镜。</span></label></li><li data-check-id="mosquito"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>驱蚊用品：</b>尤其傍晚、绿植较多和户外用餐时。</span></label></li><li data-check-id="daily-items"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>常用物品：</b>纸巾、湿巾、创可贴及个人日常必需品。</span></label></li></ul></article><article class="prep-group card"><h3>⏰ 出发前 24—48h</h3><ul><li data-check-id="flight-recheck"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>航班：</b>再次确认 CZ6063 / CZ6064 状态、值机和行李额度。</span></label></li><li data-check-id="airport-transfer"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>机场接送：</b>确认 9/24 HKT → Metadee、9/28 Centara → HKT。</span></label></li><li data-check-id="day2-weather"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 2 海况：</b>看最新天气与正规运营方通知，决定跳岛还是南部海岸 B 方案。</span></label></li><li data-check-id="hotel-recheck"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>两家酒店：</b>再次确认入住 / 退房时间；Centara 两天早餐未包含。</span></label></li><li data-check-id="cash-card"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>现金 / 卡：</b>泰铢、至少一张境外可用银行卡分开放置。</span></label></li><li data-check-id="final-five"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>最后五件：</b>护照、手机、钱包、充电器、移动电源，离家前逐项摸一遍。</span></label></li></ul></article><article class="prep-group card"><h3>🧭 行程待办</h3><ul><li data-check-id="sea-booking"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 2 海上项目：</b>如预订，正式订单确定后再补集合点、时间和接送信息。</span></label></li><li data-check-id="day2-plan-b"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 2 B 方案：</b>海况不佳就走 Karon Viewpoint → Nai Harn → Rawai → Promthep Cape。</span></label></li><li data-check-id="day3-luggage"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>Day 3 行李：</b>从 Metadee 退房后一路带到 Centara，贵重物品随身。</span></label></li><li data-check-id="restaurants"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>餐厅：</b>目前按区域留白，等后续补具体餐厅再锁定。</span></label></li><li data-check-id="copy-address"><label class="prep-check"><input type="checkbox"><span class="prep-copy"><b>地址：</b>页面里的酒店、机场、景点等地点可直接复制，方便粘贴到打车或地图 App。</span></label></li></ul></article></div></section>
+
+<section>
+  <div class="section-title"><h2>实用贴士</h2><small>这版针对行程图做了时间校正</small></div>
+  <div class="tips card"><ul>
+    <li><b>时差：</b>普吉岛比广州慢 1 小时；倒计时按带时区的绝对时间计算。</li>
+    <li><b>Kata Night Market：</b>放在 Day 1 19:30，适合作为落地后的轻量晚餐/夜市，不额外跨区。</li>
+    <li><b>Promthep Cape：</b>9/25 普吉日落约 18:20，所以南部海岸线安排为 16:45 左右抵达，而不是行程图里的 14:00。</li>
+    <li><b>Tiger Kingdom：</b>本手册只保留餐厅 / 观赏区，不安排与老虎近距离互动。</li>
+    <li><b>Jungceylon：</b>主商场通常 11:00—22:00，Big C 约 09:00—23:00；因此购物集中放 Day 3，返程日上午不再绕芭东。</li>
+    <li><b>9/27 周日：</b>Old Town 的 Lard Yai 周日步行街约 16:00—22:00，这一天固定给老镇最合适。</li>
+    <li><b>返程：</b>9/28 12:10 左右从 Karon 出发，给 16:40 国际航班保留足够机动时间。</li>
+  </ul></div>
+</section>
+
+<footer>本手册不展示手机号、证件号、订单号、房间号等个人信息。Google 地图导航需要联网；正文、倒计时、SVG 路线和主要交互均内置。</footer>
+</main>
+
+<script>
+(()=>{
+const events=[
+{iso:"2026-09-24T12:55:00+08:00",title:"CZ6063 · 广州白云 T2 起飞",tz:"Asia/Shanghai",label:"广州 UTC+8"},
+{iso:"2026-09-24T15:40:00+07:00",title:"抵达普吉 HKT",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-24T19:30:00+07:00",title:"Kata Night Market",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-25T07:00:00+07:00",title:"Day 2 · 海况最终确认",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-26T09:00:00+07:00",title:"Metadee 早餐、退房",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-26T10:30:00+07:00",title:"Tiger Kingdom · 餐厅 / 观赏区",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-26T13:30:00+07:00",title:"Jungceylon + Big C 购物",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-26T21:00:00+07:00",title:"Centara Karon 入住",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-27T10:30:00+07:00",title:"出发前往 Phuket Old Town",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-27T16:00:00+07:00",title:"Lard Yai 周日步行街",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-28T11:45:00+07:00",title:"Centara 退房",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-28T12:10:00+07:00",title:"从 Karon 出发前往 HKT",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-28T16:40:00+07:00",title:"CZ6064 · 普吉 HKT 起飞",tz:"Asia/Bangkok",label:"普吉 UTC+7"},
+{iso:"2026-09-28T21:40:00+08:00",title:"抵达广州白云 T2",tz:"Asia/Shanghai",label:"广州 UTC+8"}
+].map(e=>({...e,t:new Date(e.iso).getTime()}));
+const $=id=>document.getElementById(id);
+function tick(){
+  const now=Date.now(),n=events.find(e=>e.t>now);
+  if(!n){$("nextTitle").textContent="旅程已圆满结束";$("nextTime").textContent="2026 普吉岛 · 5天4晚";["cdD","cdH","cdM","cdS"].forEach(id=>$(id).textContent="00");return}
+  let x=n.t-now,d=Math.floor(x/86400000);x%=86400000;let h=Math.floor(x/3600000);x%=3600000;let m=Math.floor(x/60000);x%=60000;let s=Math.floor(x/1000);
+  $("cdD").textContent=String(d).padStart(2,"0");$("cdH").textContent=String(h).padStart(2,"0");$("cdM").textContent=String(m).padStart(2,"0");$("cdS").textContent=String(s).padStart(2,"0");
+  $("nextTitle").textContent=n.title;
+  $("nextTime").textContent=new Intl.DateTimeFormat("zh-CN",{timeZone:n.tz,month:"long",day:"numeric",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(n.t))+" · "+n.label
+}
+function theme(){const h=new Date().getHours(),night=h<6||h>=18;document.body.classList.toggle("night",night);document.querySelector('meta[name="theme-color"]').setAttribute("content",night?"#101619":"#f7f2e7")}
+theme();tick();setInterval(tick,1000);setInterval(theme,300000);
+if("serviceWorker" in navigator&&location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}))
 })();
 </script>
-</body>
-</html>
+<script>(()=>{
+  const links=[...document.querySelectorAll('.day-nav a')],days=[...document.querySelectorAll('.day[id]')];
+  const active=id=>{links.forEach(a=>a.classList.toggle('active',a.dataset.day===id));const current=links.find(a=>a.dataset.day===id);if(current)current.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})};
+  links.forEach(a=>a.addEventListener('click',()=>active(a.dataset.day)));
+  if(days.length&&'IntersectionObserver'in window){const ob=new IntersectionObserver(entries=>{const v=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(v)active(v.target.id)},{rootMargin:'-24% 0px -55% 0px',threshold:[0,.15,.35,.6]});days.forEach(d=>ob.observe(d))}
+  if(location.hash&&/^#day[1-5]$/.test(location.hash))active(location.hash.slice(1));
+
+  let toastTimer=null;
+  const ensureToast=()=>{let t=document.getElementById('copyToast');if(!t){t=document.createElement('div');t.id='copyToast';t.className='copy-toast';t.setAttribute('role','status');t.setAttribute('aria-live','polite');document.body.appendChild(t)}return t};
+  const showToast=text=>{const t=ensureToast();t.textContent='已复制：'+text;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1800)};
+  const copyText=async text=>{text=(text||'').trim();if(!text)return false;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}else{const ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}showToast(text);return true}catch(e){return false}};
+  const destinationFromHref=href=>{try{const u=new URL(href,location.href);return (u.searchParams.get('destination')||u.searchParams.get('query')||'').trim()}catch(e){return ''}};
+  const makeCopyButton=(text,label='地址')=>{const b=document.createElement('button');b.type='button';b.className='copy-place';b.innerHTML='⧉ <span>复制</span>';b.setAttribute('aria-label','复制'+label);b.dataset.copyText=text;b.addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();const ok=await copyText(b.dataset.copyText);if(ok){const old=b.innerHTML;b.innerHTML='✓ <span>已复制</span>';b.classList.add('copied');setTimeout(()=>{b.innerHTML=old;b.classList.remove('copied')},1200)}});return b};
+  const enhanceCopyButtons=()=>{
+    document.querySelectorAll('.row').forEach(row=>{if(row.dataset.copyReady)return;const first=row.children[0],value=row.children[1];if(!first||!value||!first.textContent.includes('地址'))return;const text=(value.textContent||'').trim();if(!text)return;const wrap=document.createElement('span');wrap.className='copy-inline';value.replaceWith(wrap);wrap.appendChild(value);wrap.appendChild(makeCopyButton(text,'地址'));row.dataset.copyReady='1'});
+    document.querySelectorAll('a.place-link[href*="google.com/maps"],a.maplink[href*="google.com/maps"]').forEach(a=>{if(a.dataset.copyReady)return;let text=destinationFromHref(a.href);if(!text)return;let u;try{u=new URL(a.href,location.href)}catch(e){return}if(u.searchParams.get('waypoints')||(a.textContent||'').includes('全天'))return;const parentRow=a.closest('.row');if(parentRow&&parentRow.children[0]&&parentRow.children[0].textContent.includes('地址'))return;const b=makeCopyButton(text,'地点');b.classList.add('after-link');a.insertAdjacentElement('afterend',b);a.dataset.copyReady='1'});
+  };
+
+  const transport={
+    CZ6063:{kind:'✈️ 航班',status:'已出票',carrier:'南方航空',number:'CZ6063',from:{time:'12:55',code:'CAN T2',name:'广州白云国际机场',zone:'UTC+8',copy:'广州白云国际机场 T2'},to:{time:'15:40',code:'HKT',name:'普吉国际机场 · 国际航站楼',zone:'UTC+7',copy:'Phuket International Airport International Terminal'},duration:'3时45分',extras:['A321 NEO','有餐食','9月24日']},
+    CZ6064:{kind:'✈️ 航班',status:'已出票',carrier:'南方航空',number:'CZ6064',from:{time:'16:40',code:'HKT',name:'普吉国际机场 · 国际航站楼',zone:'UTC+7',copy:'Phuket International Airport International Terminal'},to:{time:'21:40',code:'CAN T2',name:'广州白云国际机场',zone:'UTC+8',copy:'广州白云国际机场 T2'},duration:'4时',extras:['A320-200 NEO','有餐食','9月28日']}
+  };
+  const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const box=document.getElementById('focusTransport'),title=document.getElementById('nextTitle');
+  const findTransport=t=>{if(!t)return null;if(t.includes('CZ6063')||t.includes('抵达普吉 HKT'))return transport.CZ6063;if(t.includes('CZ6064')||t.includes('抵达广州白云 T2'))return transport.CZ6064;return null};
+  const render=()=>{if(!box||!title)return;const item=findTransport(title.textContent||'');if(!item){box.classList.remove('show');box.innerHTML='';return}box.innerHTML='<div class="focus-transport-top"><div class="focus-transport-kind">'+item.kind+' · '+item.carrier+'</div><div class="focus-transport-status">'+item.status+'</div></div><div class="focus-transport-main"><div class="focus-stop"><div class="time">'+item.from.time+'</div><div class="code">'+item.from.code+'</div><div class="name">'+item.from.name+'</div><div class="zone">'+item.from.zone+'</div><button type="button" class="copy-place" data-copy-text="'+esc(item.from.copy)+'">⧉ <span>复制地点</span></button></div><div class="focus-route-mid"><div class="number">'+item.number+'</div><div class="arrow">→</div><div class="duration">'+item.duration+'</div></div><div class="focus-stop right"><div class="time">'+item.to.time+'</div><div class="code">'+item.to.code+'</div><div class="name">'+item.to.name+'</div><div class="zone">'+item.to.zone+'</div><button type="button" class="copy-place" data-copy-text="'+esc(item.to.copy)+'">⧉ <span>复制地点</span></button></div></div><div class="focus-transport-extra">'+item.extras.map(x=>'<span>'+x+'</span>').join('')+'</div>';box.classList.add('show');box.querySelectorAll('[data-copy-text]').forEach(b=>b.addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();const ok=await copyText(b.dataset.copyText);if(ok){const old=b.innerHTML;b.innerHTML='✓ <span>已复制</span>';b.classList.add('copied');setTimeout(()=>{b.innerHTML=old;b.classList.remove('copied')},1200)}}))};
+  if(title&&'MutationObserver'in window)new MutationObserver(render).observe(title,{childList:true,characterData:true,subtree:true});
+  render();enhanceCopyButtons();
+  new MutationObserver(()=>enhanceCopyButtons()).observe(document.body,{childList:true,subtree:true});
+  setInterval(render,1000);
+})();</script>
+
+<script>(()=>{const KEY='travel-atlas:2026-09-24-phuket:prep-checklist:v1';const items=[...document.querySelectorAll('[data-check-id]')],txt=document.getElementById('prepProgressText'),fill=document.getElementById('prepProgressFill'),reset=document.getElementById('prepReset');let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};const paint=()=>{let done=0;items.forEach(li=>{const input=li.querySelector('input');const checked=!!state[li.dataset.checkId];input.checked=checked;li.classList.toggle('done',checked);if(checked)done++});if(txt)txt.textContent='已完成 '+done+' / '+items.length;if(fill)fill.style.width=(items.length?Math.round(done/items.length*100):0)+'%'};items.forEach(li=>li.querySelector('input')?.addEventListener('change',e=>{state[li.dataset.checkId]=e.target.checked;save();paint()}));reset?.addEventListener('click',()=>{if(confirm('清空这台设备上的所有准备清单勾选状态？')){state={};save();paint()}});paint()})();</script></body></html>
