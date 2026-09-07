@@ -82,8 +82,8 @@ body.night{--bg:#101619;--paper:#172024;--ink:#edf3ee;--muted:#aab7b1;--line:#31
   <div class="count">
     <div><b id="cdD">17</b><span>天</span></div>
     <div><b id="cdH">00</b><span>时</span></div>
-    <div><b id="cdM">41</b><span>分</span></div>
-    <div><b id="cdS">41</b><span>秒</span></div>
+    <div><b id="cdM">40</b><span>分</span></div>
+    <div><b id="cdS">54</b><span>秒</span></div>
   </div>
 </section>
 
@@ -293,4 +293,5 @@ if("serviceWorker" in navigator&&location.protocol.startsWith("http"))window.add
   setInterval(render,1000);
 })();</script>
 
-<script>(()=>{const KEY='travel-atlas:2026-09-24-phuket:prep-checklist:v1';const items=[...document.querySelectorAll('[data-check-id]')],txt=document.getElementById('prepProgressText'),fill=document.getElementById('prepProgressFill'),reset=document.getElementById('prepReset');let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};const paint=()=>{let done=0;items.forEach(li=>{const input=li.querySelector('input');const checked=!!state[li.dataset.checkId];input.checked=checked;li.classList.toggle('done',checked);if(checked)done++});if(txt)txt.textContent='已完成 '+done+' / '+items.length;if(fill)fill.style.width=(items.length?Math.round(done/items.length*100):0)+'%'};items.forEach(li=>li.querySelector('input')?.addEventListener('change',e=>{state[li.dataset.checkId]=e.target.checked;save();paint()}));reset?.addEventListener('click',()=>{if(confirm('清空这台设备上的所有准备清单勾选状态？')){state={};save();paint()}});paint()})();</script></body></html>
+<script>(()=>{const KEY='travel-atlas:2026-09-24-phuket:prep-checklist:v1';const items=[...document.querySelectorAll('[data-check-id]')],txt=document.getElementById('prepProgressText'),fill=document.getElementById('prepProgressFill'),reset=document.getElementById('prepReset');let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};const paint=()=>{let done=0;items.forEach(li=>{const input=li.querySelector('input');const checked=!!state[li.dataset.checkId];input.checked=checked;li.classList.toggle('done',checked);if(checked)done++});if(txt)txt.textContent='已完成 '+done+' / '+items.length;if(fill)fill.style.width=(items.length?Math.round(done/items.length*100):0)+'%'};items.forEach(li=>li.querySelector('input')?.addEventListener('change',e=>{state[li.dataset.checkId]=e.target.checked;save();paint()}));reset?.addEventListener('click',()=>{if(confirm('清空这台设备上的所有准备清单勾选状态？')){state={};save();paint()}});paint()})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;daad750b40ce43d2b56e891c9b195bfe&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+</body></html>
