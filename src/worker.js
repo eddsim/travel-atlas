@@ -8,7 +8,7 @@ const TRIPS = {
 };
 
 const SW = `
-const CACHE = "travel-atlas-v13";
+const CACHE = "travel-atlas-v14";
 const PRECACHE = [
   "/",
   "/index.html",
@@ -48,6 +48,7 @@ async function offlineFallback(req) {
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
   const req = event.request;
+  const url = new URL(req.url);
 
   if (req.mode === "navigate") {
     event.respondWith((async () => {
@@ -71,7 +72,23 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Static assets: cache first, then network and refresh the cache.
+  // Trip images are network-first so replacing an image at the same URL does not get
+  // stuck behind an old Service Worker cache. If offline, fall back to the last copy.
+  if (req.destination === "image" || /\.(?:png|jpe?g|webp|gif|svg)$/i.test(url.pathname)) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE);
+      try {
+        const response = await fetch(req, { cache: "no-cache" });
+        if (response && response.ok) cache.put(req, response.clone());
+        return response;
+      } catch (e) {
+        return (await cache.match(req)) || Response.error();
+      }
+    })());
+    return;
+  }
+
+  // Other static assets can remain cache-first.
   event.respondWith((async () => {
     const cached = await caches.match(req);
     if (cached) return cached;
