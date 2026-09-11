@@ -25,11 +25,25 @@ if (!html.includes('data-grab-buttons-ready')) {
 }
 
 if (!standard.includes('### 5.1 Grab 一键打车')) {
+  const grabStandard = [
+    '有街道地址时复制完整地址；POI 更适合地图搜索时复制可识别英文 / 当地名称。复制成功使用轻量 toast。',
+    '',
+    '### 5.1 Grab 一键打车',
+    '',
+    '在 Grab 覆盖的目的地，行程时间轴中的可打车地点默认增加轻量 **「🚕 打车」** 按钮，放在地点链接 / 复制按钮右侧。',
+    '',
+    '行为规范：',
+    '',
+    '- 点击后使用 Grab 官方支持的 `grab://open?screenType=BOOKING` Deep Link 打开 Grab Transport。',
+    '- 尽量把当前 POI / 地址作为 drop-off 目的地带入；Grab 最终识别结果、上车点、车型与价格仍由 App 内确认。',
+    '- 不替用户自动下单，不跳过 Grab App 的最终确认。',
+    '- 桌面端或未安装 Grab 时 Deep Link 可能无法打开；Google Maps 与复制地点必须继续保留为兜底。',
+    '- 一条事件出现多个 POI 时，每个 POI 分别拥有自己的打车按钮，不把多个目的地混成一个按钮。'
+  ].join('\n');
   standard = replaceOnce(
     standard,
     '有街道地址时复制完整地址；POI 更适合地图搜索时复制可识别英文 / 当地名称。复制成功使用轻量 toast。',
-    `有街道地址时复制完整地址；POI 更适合地图搜索时复制可识别英文 / 当地名称。复制成功使用轻量 toast。\n\n### 5.1 Grab 一键打车\n\n在 Grab 覆盖的目的地，行程时间轴中的可打车地点默认增加轻量 **「🚕 打车」** 按钮，放在地点链接 / 复制按钮右侧。\n\n行为规范：\n\n- 点击后使用 Grab 官方支持的 \\`grab://open?screenType=BOOKING\\` Deep Link 打开 Grab Transport。\n- 尽量把当前 POI / 地址作为 drop-off 目的地带入；Grab 最终识别结果、上车点、车型与价格仍由 App 内确认。\n- 不替用户自动下单，不跳过 Grab App 的最终确认。\n- 桌面端或未安装 Grab 时 Deep Link 可能无法打开；Google Maps 与复制地点必须继续保留为兜底。\n- 一条事件出现多个 POI 时，每个 POI 分别拥有自己的打车按钮，不把多个目的地混成一个按钮。`
-    ,
+    grabStandard,
     'location interaction standard'
   );
 }
