@@ -40,7 +40,7 @@ body.night{--bg:#101619;--paper:#172024;--ink:#edf3ee;--muted:#aab7b1;--line:#31
 .copy-place{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:0 0 auto;border:1px solid var(--line);border-radius:9px;background:var(--chip);color:var(--muted);padding:4px 7px;font:inherit;font-size:10px;font-weight:900;line-height:1.2;cursor:pointer;vertical-align:middle;transition:.15s transform,.15s border-color,.15s color,.15s background}
 .copy-place:hover{transform:translateY(-1px);border-color:var(--accent);color:var(--accent)}
 .copy-place.copied{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--paper));color:var(--accent)}
-.copy-place.after-link{margin-left:5px}
+.copy-place.after-link{margin-left:5px}.grab-ride-btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;margin-left:6px;padding:4px 8px;border:1px solid color-mix(in srgb,#00b14f 42%,var(--line));border-radius:9px;background:color-mix(in srgb,#00b14f 10%,var(--paper));color:#07883f;font-size:10px;font-weight:950;line-height:1.2;white-space:nowrap;vertical-align:middle;cursor:pointer;transition:.15s transform,.15s border-color,.15s background}.grab-ride-btn:hover{transform:translateY(-1px);border-color:#00b14f;background:color-mix(in srgb,#00b14f 16%,var(--paper))}body.night .grab-ride-btn{color:#64dc91}.grab-ride-note{font-size:10px;color:var(--muted)}
 .focus-stop .copy-place{margin-top:5px;padding:3px 6px;font-size:9px}
 .copy-toast{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom));z-index:999;transform:translate(-50%,12px);max-width:min(88vw,520px);padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--paper) 94%,transparent);color:var(--ink);box-shadow:0 12px 36px rgba(0,0,0,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:12px;font-weight:850;opacity:0;pointer-events:none;transition:.18s opacity,.18s transform;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .copy-toast.show{opacity:1;transform:translate(-50%,0)}
@@ -313,4 +313,34 @@ if("serviceWorker" in navigator&&location.protocol.startsWith("http"))window.add
 })();</script>
 
 <script>(()=>{const KEY='travel-atlas:2026-09-24-phuket:prep-checklist:v1';const items=[...document.querySelectorAll('[data-check-id]')],txt=document.getElementById('prepProgressText'),fill=document.getElementById('prepProgressFill'),reset=document.getElementById('prepReset');let state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};const paint=()=>{let done=0;items.forEach(li=>{const input=li.querySelector('input');const checked=!!state[li.dataset.checkId];input.checked=checked;li.classList.toggle('done',checked);if(checked)done++});if(txt)txt.textContent='已完成 '+done+' / '+items.length;if(fill)fill.style.width=(items.length?Math.round(done/items.length*100):0)+'%'};items.forEach(li=>li.querySelector('input')?.addEventListener('change',e=>{state[li.dataset.checkId]=e.target.checked;save();paint()}));reset?.addEventListener('click',()=>{if(confirm('清空这台设备上的所有准备清单勾选状态？')){state={};save();paint()}});paint()})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;daad750b40ce43d2b56e891c9b195bfe&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+<script data-grab-buttons-ready>
+(()=>{
+  const getDestination=(href)=>{
+    try{
+      const u=new URL(href,location.href);
+      if(!/google\.com\/maps/.test(u.hostname+u.pathname)) return '';
+      return (u.searchParams.get('destination')||u.searchParams.get('query')||'').trim();
+    }catch(e){return ''}
+  };
+  const makeGrabUrl=(destination)=>{
+    const q=encodeURIComponent(destination);
+    return 'grab://open?screenType=BOOKING&vertical=Car&dropOffAddress='+q+'&dropOffKeywords='+q;
+  };
+  document.querySelectorAll('a.place-link[href*="google.com/maps"]').forEach(link=>{
+    if(link.dataset.grabEnhanced==='1') return;
+    const destination=getDestination(link.href);
+    if(!destination) return;
+    const btn=document.createElement('a');
+    btn.className='grab-ride-btn';
+    btn.href=makeGrabUrl(destination);
+    btn.setAttribute('aria-label','用 Grab 打车到 '+destination);
+    btn.title='打开 Grab，并把这里作为目的地';
+    btn.textContent='🚕 打车';
+    const copy=link.nextElementSibling?.classList?.contains('copy-place')?link.nextElementSibling:null;
+    (copy||link).insertAdjacentElement('afterend',btn);
+    link.dataset.grabEnhanced='1';
+  });
+})();
+</script>
 </body></html>
